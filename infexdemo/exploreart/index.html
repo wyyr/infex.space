@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Infex Demo</title>
+		<!--projectdescription--><meta name="description" content="New 3Sixty Virtual Tour Project"><!--projectdescription-end-->
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width, shrink-to-fit=no">
+		
+		<link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+		<link rel="stylesheet" type="text/css" href="style.css">
+		
+		<!-- Insert this line above script imports  -->
+		<script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+		<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+		<script src="imagedata.js"></script>
+		<script src="jquery.js"></script>
+		<script src="three.min.js"></script>
+		<script src="panolens.min.js"></script>
+		
+		<!-- Insert this line after script imports -->
+		<script>if (window.module) module = window.module;</script>
+		
+		<style>
+		
+			
+						
+			/* SCROLLBAR STYLING */
+			/* width */
+			::-webkit-scrollbar {
+				width: 6px;
+				height: 6px;
+			}
+			/* Track */
+			::-webkit-scrollbar-track {
+				background: inherit; 
+			}
+			/* Handle */
+			::-webkit-scrollbar-thumb {
+				background: #eba576; 
+				transition: background .5s;
+			}
+			/* Handle on hover */
+			::-webkit-scrollbar-thumb:hover {
+				background: #ff6600; 
+			}
+
+
+			html, body {
+				margin: 0;
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+				background-color: #000;
+				color; black;
+			}
+
+			a:link, a:visited{
+				color: #bdc3c7;	
+			}
+
+			.fullwrapper{
+				position: fixed;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				background-color: black;
+			}
+			
+			#container {
+                width: 100%;
+                height: 100%;
+            }
+			
+			#tmp{
+				position: fixed;
+				top: 0;
+				left: 0; 
+				right: 0;
+				bottom: 0;
+				padding: 100px;
+				background-color: rgba(0,0,0,.5);
+				backdrop-filter: blur(5px);
+				display: none;
+			}
+		</style>
+	</head>
+	<body id="body">
+
+		<div class="navigasi" style="position:fixed;">
+			<div style="display:flex;">
+				<div><button class="sound-on" kondisi="off">Sound : Off</button></div>
+				<div><button class="show-map">Map</button></div>
+				<div><button class="show-nirmana2d">Show Nirmana 2d</button></div>
+				<div><button class="show-nirmana3d">Show Nirmana 3d</button></div>
+				<div>
+					<audio class="atmosphere" style="display:none;" id="yourAudioTag" controls loop>
+					  <source src="audios_outside/atmosphere.mp3" type="audio/ogg">
+					</audio>
+				</div>
+			</div>
+		</div>
+		<!-- nirmana 2d single -->
+		<div class="nirmana2d-display" style="background-color:#b2a593;background-image:url('assets/images/backgroundstart.jpg');height:100%;width:100%;position:fixed;display:none;">
+			<div style="overflow-x:hidden;overflow-y:scroll;height: 100%;padding:15px;" align="center">
+					<div align="right">
+						<button class="close-nirmana2d-display">Back to explore</button>
+						<br>
+						<br>
+					</div>
+					<div>
+						<img src="images/WhatsAppImage2021-08-12at21.50.51.jpeg" style="width:100%;max-width:500px;">
+					</div>
+					<div style="max-width:800px;">
+						<h2>Nirmana 2D</h2>
+						<p>By Ahmad Mukhsin</p>
+						<p CLASS="">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+					</div>
+					<div>
+						<br>
+						<br>
+						<br>
+					</div>
+				
+				
+			</div>
+		</div>
+
+		<!-- map display -->
+		<div class="map-display" style="background-color: rgba(0, 0, 0, 0.7);height:100%;width:100%;position:fixed;display:none;justify-content: center;align-items: center;">
+			<div style="flex-basis:300px;min-height:100px;display:flex;padding:15px;flex-direction:column;">
+				<div>
+					<button class="hide-map">Close Map</button>
+				</div>
+				<div>
+					<!-- <div style="position: relative;transform: rotate(-45deg);z-index:100;top:100%;right:5%"><i class="fas fa-location-arrow"></i></div> -->
+					<div class="player-position-overlay" style="">
+						<div style="position:relative;top:70%;left:23%">
+							<!-- <i style="transform: rotate(-45deg);width:20px;" class="pointer-player fas fa-location-arrow"></i> -->
+							<img class="pointer-player" src="assets/images/Arrow.png" width="20px">
+						</div>
+					</div>
+					<img src="assets/navigator/map.jpg" style="width:100%;">
+
+				</div>
+				
+			</div>
+		</div>
+		<style type="text/css">
+			.player-position-overlay{
+				max-width:300px;width: 100%;height:420px;position: absolute;
+			}
+			
+			@media only screen and (max-width: 325px) {
+				.player-position-overlay{
+					height:0;padding:63%;
+				}
+			}
+		</style>
+		<div class="include-3d-preview" style="position:fixed;height:100%;width:100%;display:none;background-color:black;">
+			<div style="position: fixed;width:100%;" align="right">
+				<button style="margin:15px" class="close-include-3d-preview">Kembali</button>
+			</div>
+			<div class="loading-screen" style="position:fixed;width:100%;height: 100%;background: black;display:flex;justify-content:center;align-items: center;">
+		        <div><H1>LOADING..</H1></div>
+		    </div>
+			<div class="display-preview-3d-nirmana">
+				
+			</div>
+			<!-- <iframe class="iframe-3d" src="" height="100%" width="100%" title="description" style="border:none"></iframe> -->
+		</div>
+		<script type="module">
+
+      function getParamValue(paramName)
+      {
+          
+          var url = window.location.search.substring(1); //get rid of "?" in querystring
+          var qArray = url.split('&'); //get key-value pairs
+          // console.log(qArray)
+          for (var i = 0; i < qArray.length; i++) 
+          {
+              var pArr = qArray[i].split('='); //split key and value
+              if (pArr[0] == paramName) 
+                  pArr[1] = decodeURI(pArr[1])
+                  return pArr[1]; //return value
+          }
+      }
+
+      var controls;
+
+      var btn = document.getElementById("btn");
+      var btn2 = document.getElementById("btn2");
+      var btn3 = document.getElementById("btn3");
+      var audio = document.getElementById("player");
+      var choose = document.getElementById("choose");
+
+      
+
+      // btn2.addEventListener("click", function () {
+      //   audio.play();
+      //   choose.play();	
+		    // loadModel(model2);
+      // });
+
+      // btn3.addEventListener("click", function () {
+      //   audio.play();
+      //   choose.play();
+      //   loadModel(model3);
+      // });
+
+
+      import * as THREE from "./testmobil/build/three.module.js";
+      import { OrbitControls } from "./testmobil/build/OrbitControls.js";
+      import { GLTFLoader } from "./testmobil/build/GLTFLoader.js";
+      import { RGBELoader } from "./testmobil/build/RGBELoader.js";
+
+      var camera, scene, renderer;
+      var car;
+      var gltf_loader = new GLTFLoader();
+      
+      THREE.Cache.clear();
+      
+
+      // var model = "gltf/nirmana3d/scene.gltf";
+       var model = "testmobil/gltf/0001-Azka Khumaeroh/scene.gltf";
+
+      var model2 = "testmobil/gltf/lamborghini_urus/scene.gltf";
+      var model3 = "testmobil/gltf/peugeot_3008/scene.gltf";
+      var model4 = "testmobil/gltf/ironman3d/scene.gltf";
+      var model5 = "testmobil/gltf/dococ/scene.gltf";
+      // console.log(model);
+
+      init();
+      loop();
+
+      // const control2 = new OrbitControls(camera, renderer.domElement);
+      // console.log(control2)
+      function init() {
+        const container = document.createElement("div");
+        container.setAttribute("id", "preview-model");
+        // document.body.appendChild(container);
+        document.querySelector(".display-preview-3d-nirmana").appendChild(container);
+        // ------------------------------------ *** ---------------------------------------
+
+        camera = new THREE.PerspectiveCamera(
+          75,
+          window.innerWidth / window.innerHeight,
+          0.1,
+          1000
+        );
+        // camera.position.set(40, 20, 30);
+        camera.position.set(20, 20, 40);
+        scene = new THREE.Scene();
+        scene.background = new THREE.Color(0xcccccc);
+
+        renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.outputEncoding = THREE.sRGBEncoding;
+
+        container.appendChild(renderer.domElement);
+
+
+        //getparam
+        
+      
+      
+      $('.pemilik-karya').text(getParamValue('filename'));
+
+      // getparamend
+        // LOAD MODEL
+
+        // load model placeholder
+        // gltf_loader.load(model, function (gltf) {
+        //   car = gltf.scene;
+        //   gltf.scene.scale.set(0.1, 0.1, 0.1);
+        //   // scene.add(gltf.scene);
+
+        //   render();
+        // });
+
+        var light = new THREE.PointLight(0xffffff, 0.0);
+        light.position.set(100, 100, 100);
+        scene.add(light);
+
+        // LOAD TEXTURE
+        const rgbe_loader = new RGBELoader();
+
+        rgbe_loader.setDataType(THREE.UnsignedByteType);
+        rgbe_loader.load("testmobil/hdr/AnyConv.com__hdri_corrected_darker (1).hdr", function (texture) {
+          const pmremGenerator = new THREE.PMREMGenerator(renderer);
+          const envMap = pmremGenerator.fromEquirectangular(texture).texture;
+
+          scene.background = envMap;
+          scene.environment = envMap;
+          // renderer.toneMappingExposure = 500;
+          render();
+        });
+
+
+        // VIEW CONTROLS
+        controls = new OrbitControls(camera, renderer.domElement);
+        controls.addEventListener("change", render);
+        controls.minDistance = 20;
+        controls.maxDistance = 70;
+        controls.target.set(0, 0.5, 0);
+        controls.mouseButtons = {
+          LEFT: THREE.MOUSE.ROTATE,
+          MIDDLE: THREE.MOUSE.DOLLY,
+          RIGHT: THREE.MOUSE.ROTATE,
+        };
+        // controls.minPolarAngle = 0;
+        // controls.maxPolarAngle = Math.PI / 2;
+        controls.update();
+
+        window.addEventListener("resize", onWindowResize, false);
+      }
+
+      function loadModel(modelPath, x = 0.1, y = 0.1, z = 0.1) {
+        gltf_loader.load(modelPath, function (gltf) {
+          scene.remove(car);
+          car = gltf.scene;
+          gltf.scene.scale.set(x, y, z);
+          scene.add(car);
+          $('.loading-screen').hide();
+          render();
+
+         
+          
+        });
+      }
+
+      function onWindowResize() {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        render();
+      }
+      var render_count=0;
+
+      function render() {
+        renderer.render(scene, camera);
+        // console.log(render_count++)
+        render_count++;
+        // console.log(render_count);
+        if(render_count == 3){
+          // console.log('render done');
+          
+        
+        }
+      }
+      var reset_camera = 0;
+      function loop() {
+        requestAnimationFrame(loop);
+        controls.update();
+        renderer.render(scene, camera);
+      }
+
+      
+
+      $('.show-nirmana3d').click(function(){
+      	 			// var render_count=0;
+					$('.include-3d-preview').show();
+
+					loadModel(model,9,9,9);
+
+					
+					// $('.iframe-3d').attr('src','testmobil/index.html?filename=nirmana3d');
+					
+					
+		});
+
+
+     
+
+      $('.close-include-3d-preview').click(function(){
+					scene.remove(car);
+					$('.include-3d-preview').hide();
+					camera.position.set(20, 20, 40);
+					$('.loading-screen').show();
+					// $('.iframe-3d').attr('src','');
+		})
+
+      // $(document).keypress(function(){
+      // 	loadModel(model4,9,9,9);
+      // });
+
+      setTimeout(function(){
+      	loadModel(model5,4,4,4);
+      },3000)
+    </script>
+
+		<script type="text/javascript">
+			button_click_sound = new Audio('audios_outside/button_click.mp3');
+			$(document).ready(function(){
+				
+				// $(document).keypress(function(){
+				//   $('.iframe-3d').attr('src','testmobil/index.html?filename=pagani_zonda_shooting_car');
+				// });
+				
+
+				$('button').click(function(){
+					button_click_sound.play()
+
+				});
+				$('.show-map').click(function(){
+					$('.map-display').show();
+					$('.map-display').css('display','flex');
+				});
+
+				$('.show-nirmana2d').click(function(){
+					$('.nirmana2d-display').show();
+					
+				});
+
+				
+
+				$('.close-nirmana2d-display').click(function(){
+					$('.nirmana2d-display').hide();
+				})
+
+
+
+				$('.hide-map').click(function(){
+					$('.map-display').hide();
+				})
+				$('.sound-on').click(function(){
+					
+					kondisi = $(this).attr('kondisi');
+					if(kondisi == "off"){
+						$(this).attr('kondisi','on')
+						document.getElementById('yourAudioTag').play();
+						$(this).text('Sound : On');
+					}else{
+						$(this).attr('kondisi','off')
+						document.getElementById('yourAudioTag').pause();
+						$(this).text('Sound : Off');
+
+					}
+				});
+			});
+		</script>
+	    <div id="container" style="color: black;"></div>
+    	<div id="loading" class="fullwrapper" style="display: table; width: 100%; height: 100%;">
+    		<div style="display: table-cell; vertical-align: middle; text-align: center; color: white; font-size: 30px; padding: 50px;">
+    			<!--loadingtext--><p>Please Wait...</p><!--loadingtext-end-->
+    		</div>
+    	</div>
+		
+		<div id="tmp">
+			<div style="width: 100%; height: 100%; overflow: auto; box-sizing: border-box; position: relative;" id="tmpcontent"></div>
+			<div style="position: absolute; top: 0; right: 0; padding: 10px; color: red; font-size: 20px; z-index: 10;" onclick="hideTemp()"><i class="fa fa-times"></i></div>
+		</div>
+
+    	<script>
+
+				function preview2d(){
+					button_click_sound.play()
+					$('.nirmana2d-display').show();
+					
+					// $('.include-3d-preview').show();
+				}
+
+				function getData(id){
+					alert(id);
+				}
+
+				function preview3d(){
+					// $('.nirmana2d-display').show();
+					button_click_sound.play()
+					$('.include-3d-preview').show();
+					// $('.iframe-3d').attr('src','testmobil/index.html?filename=nirmana3d');
+					
+				}
+				
+    		
+            var container = document.querySelector( '#container' );
+			/*panolens*/
+            var viewer = new PANOLENS.Viewer( { container: container , controlBar: false,  output: 'console' , autoHideInfospot: false, } );
+
+            var vector = new THREE.Vector3(); // create once and reuse it!
+        		THREE
+				
+			$('.show-map').click(function(){
+				// console.log();
+				cam = viewer.camera.position;
+				// camera_hadap =  ;
+				cam_x = viewer.camera.position.x.toFixed(1);
+				cam_y = viewer.camera.position.y.toFixed(1);
+				cam_z = viewer.camera.position.z.toFixed(1);
+				all_cam = 'x'+cam_x+' y'+cam_y+' z'+cam_z;
+				// console.log('x'+cam_x+' z'+cam_z);
+				camera_hadap = parseFloat(cam_x)+parseFloat(cam_z);
+				// console.log(camera_hadap.toFixed(1));
+
+				z_conver = parseFloat(cam_z)*10;
+				console.log(z_conver);
+				function difference(n, m){
+				    return Math.abs(n - m)
+				}
+				if(cam_z >= 0){
+					// console.log('up')
+					if(cam_x <=0){
+						// console.log('upright '+ z_conver);
+						console.log('upright '+ parseInt(z_conver)*900/100+' drajat');
+						hadap_degree = (parseInt(z_conver)*900/100);
+						degree_inverted = difference(hadap_degree,90);
+						// console.log();
+						// 10% * 900 = 90
+						// 0% * 900 = 0
+						$('.pointer-player').css('transform','rotate('+degree_inverted+'deg)');
+
+					}else{
+						console.log('upleft '+ parseInt(z_conver)*900/100+' drajat');
+						hadap_degree = (parseInt(z_conver)*900/100)-90;
+						// degree_inverted = difference(hadap_degree,90)-120;
+						$('.pointer-player').css('transform','rotate('+hadap_degree+'deg)');
+					}
+				}else{
+					// console.log('down')
+					if(cam_x <=0){
+						console.log('downleft '+ parseInt(z_conver)*900/100+' drajat')
+						hadap_degree = (parseInt(z_conver)*900/100);
+						degree_inverted = difference(hadap_degree,90);
+
+						$('.pointer-player').css('transform','rotate('+degree_inverted+'deg)');
+					}else{
+						console.log('downright '+ parseInt(z_conver)*900/100+' drajat')
+						hadap_degree = (parseInt(z_conver)*900/100)-90;
+						// degree_inverted = difference(hadap_degree,90)-45;
+						$('.pointer-player').css('transform','rotate('+hadap_degree+'deg)');
+					}
+				}
+				// console.log(45/)
+
+				
+			});
+			/*panolens-end*/
+			
+			viewer.addUpdateCallback(function(){
+				
+			});
+			
+			/*panoramas*/
+var Spot_1 = new PANOLENS.ImagePanorama( "panoramas/Spot_1.jpg" );
+						Spot_1.addEventListener('progress', function(e){
+							$("#loading").show();
+						});
+						Spot_1.addEventListener('load', function(e){
+							$("#loading").fadeOut();
+						});
+						Spot_1.addEventListener('click', function(e){
+						});
+
+var infospotSpot_10 = new PANOLENS.Infospot( 512, hotspotIcons[1].data, true );
+							infospotSpot_10.position.set( 511.02, -990.51, -4870.22 );
+							Spot_1.add(infospotSpot_10);
+infospotSpot_10.addEventListener('click', function(){
+viewer.setPanorama( Spot_2 );
+});
+var infospotSpot_11 = new PANOLENS.Infospot( 512, hotspotIcons[1].data, true );
+							infospotSpot_11.position.set( -2268.03, -827.95, -4369.12 );
+							Spot_1.add(infospotSpot_11);
+infospotSpot_11.addEventListener('click', function(){
+viewer.setPanorama( Spot_3 );
+});
+viewer.add( Spot_1 );
+var Spot_2 = new PANOLENS.ImagePanorama( "panoramas/Spot_2.jpg" );
+						Spot_2.addEventListener('progress', function(e){
+							$("#loading").show();
+						});
+						Spot_2.addEventListener('load', function(e){
+							$("#loading").fadeOut();
+						});
+						Spot_2.addEventListener('click', function(e){
+						});
+
+var infospotSpot_20 = new PANOLENS.Infospot( 512, hotspotIcons[1].data, true );
+							infospotSpot_20.position.set( -553.58, -1013.01, 4859.04 );
+							Spot_2.add(infospotSpot_20);
+infospotSpot_20.addEventListener('click', function(){
+viewer.setPanorama( Spot_1 );
+});
+var infospotSpot_21 = new PANOLENS.Infospot( 512, hotspotIcons[1].data, true );
+							infospotSpot_21.position.set( -4737.94, -1287.14, -906.48 );
+							Spot_2.add(infospotSpot_21);
+infospotSpot_21.addEventListener('click', function(){
+viewer.setPanorama( Spot_3 );
+});
+var infospotSpot_22 = new PANOLENS.Infospot( 512, hotspotIcons[1].data, true );
+							infospotSpot_22.position.set( -3887.57, -986.28, -2971.34 );
+							Spot_2.add(infospotSpot_22);
+infospotSpot_22.addEventListener('click', function(){
+viewer.setPanorama( Spot_4 );
+});
+var infospotSpot_23 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotSpot_23.position.set( 98.37, -397.95, -4978.76 );
+							Spot_2.add(infospotSpot_23);
+infospotSpot_23.addEventListener('click', function(){
+preview2d();
+});
+var infospotSpot_24 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotSpot_24.position.set( 2182.77, -1083.56, -4355.58 );
+							Spot_2.add(infospotSpot_24);
+infospotSpot_24.addEventListener('click', function(){
+getData(1);
+});
+var infospotSpot_25 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotSpot_25.position.set( 69.69, -1197.72, -4849.60 );
+							Spot_2.add(infospotSpot_25);
+infospotSpot_25.addEventListener('click', function(){
+getData(2);
+});
+viewer.add( Spot_2 );
+var Spot_3 = new PANOLENS.ImagePanorama( "panoramas/Spot_3.jpg" );
+						Spot_3.addEventListener('progress', function(e){
+							$("#loading").show();
+						});
+						Spot_3.addEventListener('load', function(e){
+							$("#loading").fadeOut();
+						});
+						Spot_3.addEventListener('click', function(e){
+						});
+
+var infospotSpot_30 = new PANOLENS.Infospot( 512, hotspotIcons[1].data, true );
+							infospotSpot_30.position.set( -1695.87, -1439.63, -4467.45 );
+							Spot_3.add(infospotSpot_30);
+infospotSpot_30.addEventListener('click', function(){
+viewer.setPanorama( Spot_4 );
+});
+var infospotSpot_31 = new PANOLENS.Infospot( 512, hotspotIcons[1].data, true );
+							infospotSpot_31.position.set( 4592.18, -1678.59, 1019.53 );
+							Spot_3.add(infospotSpot_31);
+infospotSpot_31.addEventListener('click', function(){
+viewer.setPanorama( Spot_2 );
+});
+var infospotSpot_32 = new PANOLENS.Infospot( 512, hotspotIcons[1].data, true );
+							infospotSpot_32.position.set( 2382.28, -844.92, 4307.13 );
+							Spot_3.add(infospotSpot_32);
+infospotSpot_32.addEventListener('click', function(){
+viewer.setPanorama( Spot_1 );
+});
+viewer.add( Spot_3 );
+var Spot_4 = new PANOLENS.ImagePanorama( "panoramas/Spot_4.jpg" );
+						Spot_4.addEventListener('progress', function(e){
+							$("#loading").show();
+						});
+						Spot_4.addEventListener('load', function(e){
+							$("#loading").fadeOut();
+						});
+						Spot_4.addEventListener('click', function(e){
+						});
+
+var infospotSpot_40 = new PANOLENS.Infospot( 512, hotspotIcons[1].data, true );
+							infospotSpot_40.position.set( 1488.13, -1580.97, 4501.22 );
+							Spot_4.add(infospotSpot_40);
+infospotSpot_40.addEventListener('click', function(){
+viewer.setPanorama( Spot_3 );
+});
+var infospotSpot_41 = new PANOLENS.Infospot( 512, hotspotIcons[1].data, true );
+							infospotSpot_41.position.set( 4126.87, -1110.86, 2580.24 );
+							Spot_4.add(infospotSpot_41);
+infospotSpot_41.addEventListener('click', function(){
+viewer.setPanorama( Spot_2 );
+});
+var infospotSpot_42 = new PANOLENS.Infospot( 512, hotspotIcons[1].data, true );
+							infospotSpot_42.position.set( 2511.28, -583.02, 4277.57 );
+							Spot_4.add(infospotSpot_42);
+infospotSpot_42.addEventListener('click', function(){
+viewer.setPanorama( Spot_1 );
+});
+var infospotSpot_43 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotSpot_43.position.set( -1743.85, -666.73, -4627.75 );
+							Spot_4.add(infospotSpot_43);
+infospotSpot_43.addEventListener('click', function(){
+preview3d();
+});
+viewer.add( Spot_4 );
+$(document).ready(function(){ viewer.setPanorama( Spot_1 ); });
+
+/*panoramas-end*/
+            
+			
+			function hideTemp(){
+				$("#tmp").fadeOut();
+				setTimeout(function(){
+					$("#tmpcontent").html("");
+				},1000);
+			}
+			
+			function showMedia(type, content){
+				switch(type){
+					case 1 :
+						//Image
+						$("#tmpcontent").html("<img src='"+content+"' style='width: 100%;'>");
+						$("#tmp").fadeIn();
+						break;
+					case 2 :
+						//Video
+						$("#tmpcontent").html("<video id='webvideo' controls autoplay style='width: 100%; height: 100%;'><source src='" +content+ "' type='video/mp4'> Your browser does not support the video tag. </video>");
+						$("#tmp").fadeIn();
+						break;
+					case 3 :
+						//Audio
+						$("#tmpcontent").html("<audio controls style='width: 100%;'><source src='"+content+"' type='audio/ogg'>Your browser does not support the audio tag.</audio>");
+						$("#tmp").fadeIn();
+						break;
+					case 4 :
+						//PDF
+						$("#tmpcontent").html("<iframe src='pdfjs/web/viewer.html?file=../../"+content+"' style='width: 100%; height: 100%;'></iframe>");
+						$("#tmp").fadeIn();
+						break;
+				}
+			}
+        </script>
+        <script type="text/javascript">
+        	
+        	
+        </script>
+	</body>
+</html>

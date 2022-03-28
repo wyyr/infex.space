@@ -1,0 +1,3143 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Infex Exhibition 2022</title>
+		<!--projectdescription--><meta name="description" content="New 3Sixty Virtual Tour Project"><!--projectdescription-end-->
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width, shrink-to-fit=no">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+		<link rel="stylesheet" href="js/flickity/flickity.min.css">
+		<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+		<link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<link rel="stylesheet" type="text/css" href="css/main.css">
+		<link rel="shortcut icon" href="/exploreart/icons/infex_low.png">
+		<!-- Insert this line above script imports  -->
+		<script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+		
+		<script src="imagedata.js"></script>
+		<script src="jquery.js"></script>
+		<script src="three.min.js"></script>
+		<script src="panolens.min.js"></script>
+		<script src="js/flickity/flickity.pkgd.min.js"></script>
+		<!-- <script type='text/javascript' src='/js/jquery.mousewheel.min.js'></script> -->
+		<!-- Insert this line after script imports -->
+		<script>if (window.module) module = window.module;</script>
+		
+		<style>
+			
+
+			.loaderku {
+  /*border: 2 px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 2 px solid #3498db;
+  width: 20px;
+  height: 20px;*/
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+		.button-infex{
+
+		}
+
+
+			/*IE9*/
+*::selection 
+{
+    background-color:transparent;
+} 
+*::-moz-selection
+{
+    background-color:transparent;
+}
+*
+{        
+    -webkit-user-select: none;
+    -moz-user-select: -moz-none;
+    /*IE10*/
+    -ms-user-select: none;
+    user-select: none;
+
+    /*You just need this if you are only concerned with android and not desktop browsers.*/
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}    
+input[type="text"], textarea, [contenteditable]
+{
+
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+}
+
+
+
+			
+						
+			/* SCROLLBAR STYLING */
+			/* width */
+			::-webkit-scrollbar {
+				width: 6px;
+				height: 6px;
+			}
+			/* Track */
+			::-webkit-scrollbar-track {
+				background: inherit; 
+			}
+			/* Handle */
+			::-webkit-scrollbar-thumb {
+				background: #eba576; 
+				transition: background .5s;
+			}
+			/* Handle on hover */
+			::-webkit-scrollbar-thumb:hover {
+				background: #ff6600; 
+			}
+
+
+			html, body {
+				margin: 0;
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+				background-color: #000;
+				color; black;
+			}
+
+			a:link, a:visited{
+				color: #bdc3c7;	
+			}
+
+			.fullwrapper{
+				position: fixed;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				background-color: black;
+			}
+			
+			#container {
+                width: 100%;
+                height: 100%;
+            }
+			
+			#tmp{
+				position: fixed;
+				top: 0;
+				left: 0; 
+				right: 0;
+				bottom: 0;
+				padding: 100px;
+				background-color: rgba(0,0,0,.5);
+				backdrop-filter: blur(5px);
+				display: none;
+			}
+
+			.tombol-volume i{
+				pointer-events: auto!important;
+				color:white !important;
+				cursor: pointer;!important;
+
+			}
+			
+
+
+			.karya-scrollur-mobile{
+				display:none;
+			}.karya-scrollur{
+				display:block;
+			}.button-for-mobile{
+				display:none;
+			}.button-for-desktop{
+				
+			}
+
+			/*If the browser window is 600px or smaller, the background color will be lightblue:*/
+			@media only screen and (max-width: 600px) {
+			  .karya-scrollur-mobile{
+				display:block;
+				/*flex-direction:row;*/
+				
+				}.karya-scrollur{
+					display:none;
+				}.button-for-mobile{
+					display:block;
+				}.button-for-desktop{
+					display:none;
+				}
+			}
+
+			@font-face {
+				  font-family: tulisan;
+				  src: url('fonts/Regular.ttf');
+				}
+			
+		</style>
+	</head>
+	<body id="body">
+		<div style="position:fixed;top:0;display:none;" class="image-cacher">
+			<img width="1" height="1" src="background/blurry_image_smaller.jpg">
+			<img width="1" height="1" src="textures/oldpaper.jpg">
+			
+		</div>
+		<div style="position:fixed;height:100%;width:100%;background-image:url('background/blurry_image_smaller.jpg');background-size:cover;display:flex;flex-direction:column;display:none;z-index:5;" class="preview-group">
+			<!-- <div style="height:20%;">
+				
+				<br>
+			</div> -->
+		<!-- <div class="preview-group-loader" style="position:fixed;height:100%;width:100%;background:black;top:0;display:none;">
+			<div style="margin:auto">
+				
+	    		<H3>Memuat gambar</H3>
+	    		<div><text>Pastikan koneksi anda stabil..</text></div>
+	    		<br>
+	    		<div><i class="fa fa-spinner loaderku" style="color:white;font-size:40px"></i></div>
+		        
+			</div>
+		</div> -->
+		<div style="margin-top:0px;">
+			<h5 style="font-style:italic;margin-top: 40px;" class="study-prodi"></h5>
+			<text style="font-size:15px;font-style:italic;">Geser untuk melihat</text>
+			<br>
+		</div>
+		<div style="width:100%;height:60vh;">
+			<!-- <div style="position:fixed;top:0;right:0px;text-align:right;padding:15px;"><button class="button-for-mobile close-preview-grup btn btn-outline-light">Kembali</button></div> -->
+			
+			<div class="karya-scrollur-mobile" id="mobile-scrollur" style="overflow-y:hidden;overflow-x: scroll;width:100%;height:100%;opacity;white-space:nowrap;padding:10px;">
+				<!-- mobile -->
+			</div>
+			<div class="karya-scrollur">
+				<!-- desktop -->
+			</div>
+			<br>
+			<!-- <div style="text-align:left;padding:15px;text-align:center"><button class="button-for-desktop close-preview-grup btn btn-outline-light">Kembali</button></div>
+			<div style="position:fixed;bottom:30px;width:100%;"><button style="margin:auto;" class="button-for-mobile close-preview-grup btn btn-outline-light">Kembali</button></div> -->
+
+		</div >
+		<div style="position:fixed;bottom:20px;width:100%;">
+			<div style="text-align:left;padding:15px;text-align:center;text-align:center;z-index:5;"><button class=" close-preview-grup btn btn-outline-light">Kembali</button></div>
+		</div>
+
+
+		
+	
+
+
+
+
+
+
+
+
+		</div>
+	    <div id="container" style="color: black;"></div>
+    	<div id="loading" class="fullwrapper" style="display: table; width: 100%; height: 100%;">
+    		<div style="display: table-cell; vertical-align: middle; text-align: center; color: white; font-size: 30px; padding: 50px;">
+    			<!--loadingtext-->Loading...<!--loadingtext-end-->
+    		</div>
+    	</div>
+		
+		<div id="tmp">
+			<div style="width: 100%; height: 100%; overflow: auto; box-sizing: border-box; position: relative;" id="tmpcontent"></div>
+			<div style="position: absolute; top: 0; right: 0; padding: 10px; color: red; font-size: 20px; z-index: 10;" onclick="hideTemp()"><i class="fa fa-times"></i></div>
+		</div>
+
+
+
+
+		<div class="include-3d-preview" style="position:fixed;height:100%;width:100%;display:none;background-color:black;top:0">
+			<div style="position: fixed;width:100%;height:100%;display:flex;flex-direction:column;justify-content:space-between;pointer-events:none;">
+				
+				<div style="text-align:center;margin-top:20px;">
+					<h4 style="font-style:italic;margin-top:0;" class="3d-work-name">Nama File</h4>
+
+					<text style="font-size:16px;font-style:italic;" class="3d-name">Nama Pemilik</text>
+				</div>
+				<div style="text-align:center;margin-bottom:20px;pointer-events:auto;">
+					<button style="margin:15px" class="close-include-3d-preview btn btn-outline-light">Kembali</button>
+				</div>
+			</div>
+
+			<div class="loading-screen" style="position:fixed;width:100%;height: 100%;background: black;display:flex;justify-content:center;align-items: center;">
+		        <div>
+		        		<H3>Memuat file 3D</H3>
+		        		<div><text>Pastikan koneksi anda stabil..</text></div>
+		        		<br>
+		        		<div><i class="fa fa-spinner loaderku" style="color:white;font-size:40px"></i></div>
+		        </div>
+		        
+		    </div>
+			<div class="display-preview-3d-nirmana">
+				
+			</div>
+			<!-- <iframe class="iframe-3d" src="" height="100%" width="100%" title="description" style="border:none"></iframe> -->
+		</div>
+
+		<div style="position:fixed;width:100%;height:100%;bottom:0;pointer-events:none;z-index:2;">
+			<audio class="atmosphere" style="display:none;" id="yourAudioTag" controls loop>
+					  <source src="audios/backsound.mp3" type="audio/ogg">
+					</audio>
+			<div style="display:flex;">
+				<div style="text-align:left;padding:10px;font-size:30px;">
+					<div style="background:none;border:none;pointer-events:auto;" class="tombol-volume sound-on" kondisi="off">
+						<img src="icons/sound_off.png" width="50px">
+					</div>
+					
+				</div>
+				<!-- <div style="text-align:left;padding:10px;font-size:30px;"><button style="background:none;border:none;" class="tombol-volume"><i class="fas fa-volume-mute" aria-hidden="true" ></i></button></div> -->
+				<!-- <div><button class="" kondisi="off">Sound : Off</button></div> -->
+
+			</div>
+			<div class="self-talk" visiba="no" style="margin-top:0;text-align:center;background-color:black;padding:10px;display:none;pointer-events:auto;">
+				<text class="changeable-self-talk"></text>
+				<br>
+				<text style="opacity:0.5;">[Ok]</text>
+			</div>
+
+			
+		</div>
+		<div class="doc-oc-interaction-angry-ending" style="position:fixed;width:100%;height:100%;background:url('dococ/angry.jpg');top:0;background-position:center;background-size:cover;display:flex;display:none;">
+			<div style="margin-top:auto;text-align:center;width:100%;margin-bottom:30px;">
+				<div class="conversation-slots" style="display: flex;flex-direction: column;text-align:center;height:30px;overflow:hidden;">
+					<div style="width:100%;">"Tinggalkan aku sendiri"</div>
+				</div>
+				
+
+				<div style="margin:10px;margin-top:50px"><button class="btn btn-outline-light close-doc-oc">Kembali</button></div>
+				
+				
+			</div>
+			
+
+		</div>
+		<div class="doc-oc-interaction-happy-ending" style="position:fixed;width:100%;height:100%;background:url('dococ/happy.jpg');top:0;background-position:center;background-size:cover;display:flex;display:none;">
+			<div style="margin-top:auto;text-align:center;width:100%;margin-bottom:30px;">
+				<div class="conversation-slots" style="display: flex;flex-direction: column;text-align:center;height:30px;overflow:hidden;">
+					<div style="width:100%;">"Terima kasih, nikmati pamerannya"</div>
+				</div>
+				
+
+				<div style="margin:10px;margin-top:50px"><button class="btn btn-outline-light close-doc-oc">Kembali</button></div>
+				
+				
+			</div>
+			
+
+		</div>
+		<div class="doc-oc-interaction" style="position:fixed;width:100%;height:100%;background:url('dococ/neutral.jpg');top:0;background-position:center;background-size:cover;display:flex;display:none;">
+			<div style="margin-top:auto;text-align:center;width:100%;margin-bottom:30px;">
+				<div style="position:fixed;width:100%;height:100%;top:0;display:flex;flex-dirextion: column;pointer-events:none;">
+						<!-- <div class="conversation-slot" style="display:flex;flex-direction: column;text-align:center;height:30px;overflow:hidden;background-color:black;width:100%;margin:auto;pointer-events:auto;word-wrap:normal;">
+						<div style="width:100%;word-break:break-word;">"Hmm"</div>
+						</div> -->
+						<button class="btn btn-dark conversation-slot" style="width: 100%;text-align:center;margin:auto;background-color:black;position:relative;bottom:30px">"Hmm butuh bantuan ?"</button>
+				</div>
+				
+				
+				<br>
+				<br>
+				<div class="katakan-sesuatu">Katakan sesuatu:</div>
+				<!-- section1 -->
+				<div style="margin:10px;"><button style="width:100%;display:none;" poin="positif" class="dococ-section-one btn btn btn-dark">Permisi apa kabar pak</button></div>
+				<div style="margin:10px;"><button style="width:100%;display:none;" poin="netral" class="dococ-section-one btn btn btn-dark">Kalau boleh tau anda sedang apa di sini</button></div>
+				<div style="margin:10px;"><button style="width:100%;display:none;" poin="negatif" class="dococ-section-one btn btn btn-dark">Anda ngapain disini</button></div>
+
+				<!-- section2 -->
+				<div style="margin:10px;"><button style="display: none;width:100%;" poin="positif" class="dococ-section-two btn btn btn-dark">Tidak perlu khawatir, anda tidak akan berubah jahat</button></div>
+				<div style="margin:10px;"><button style="display: none;width:100%;" poin="netral" class="dococ-section-two btn btn btn-dark">Sewajarnya setiap orang punya dua sisi</button></div>
+
+				<!-- section3 -->
+
+				<div style="margin:10px;"><button style="display: none;width:100%;" poin="positif" class="dococ-section-three btn btn btn-dark">Sampai jumpa semoga harimu menyenangkan</button></div>
+				<div style="margin:10px;"><button style="display: none;width:100%;" poin="negatif" class="dococ-section-three btn btn btn-dark">Saya mau pergi dulu dasar orang aneh</button></div>
+
+				<div style="margin:10px;margin-top:50px"><button class="btn btn-outline-light close-doc-oc">Kembali</button></div>
+				
+				
+			</div>
+			<script type="text/javascript">
+				
+				window.infexExit=function(){
+					
+					// pano2_evil = new THREE.TextureLoader().load( "panoramas/Panorama_2_evil.jpg" );
+		   //  		Panorama_14.updateTexture(pano2_evil);
+					
+					
+					var lookAtPositions = [
+					  new THREE.Vector3(4871.39, 1088.07, -118.41),
+					  new THREE.Vector3(1278.27, 732.65, 4769.19),
+					  new THREE.Vector3(80.63, -201.58, -4987.85)
+					  
+					];
+					texture = new THREE.TextureLoader().load( "panoramas/Panorama_15.jpg" );
+    				if(section==5){
+    					viewer.setPanorama( Panorama_1 );
+    					
+    					$('.changeable-self-talk').text('Anda kembali di pintu masuk, progress anda masih disimpan');
+    					$('.self-talk').show();
+
+    					viewer.tweenControlCenter( lookAtPositions[2], 1000 );
+    				}else{
+    					viewer.setPanorama( Panorama_15 );
+	    				viewer.tweenControlCenter( lookAtPositions[2], 1000 );
+    				}
+	    			
+					
+					// Panorama_14.updateTexture(texture)
+					// console.log(lookAtPositions);
+					
+
+
+	    		}
+
+				window.thankYou = function(){
+					
+	    			// $('.self-talk').show();
+	    			// $('.changeable-self-talk').text('Terima kasih telah mengunjungi infex');
+	    			// alert(kunjungan);
+	    			console.log(section);
+	    			section = 5;
+	    			total_semua_kunjungan = 25;
+	    			  
+	 				// persentage = 12.5/25*100;
+	 				// alert();
+	 				result_presentasi=String(kunjungan.length/total_semua_kunjungan*100)+'%';
+	 				// alert(result_presentasi);
+	 				$('.doc-oc-interaction-angry-ending').css('background-image','url("dococ/evil.jpg")');
+	 				$('.doc-oc-interaction-happy-ending').css('background-image','url("dococ/evil.jpg")');
+	 				$('.persentasi-kunjungan').text('- Anda mengunjungi '+result_presentasi+' dari total karya');
+	    			$('.rekapan-infex').show();
+	    		};
+
+				var section=1;
+				var status="belum terupdate";
+				console.log(section);
+				window.dococ = function(){
+
+				console.log(status);
+    			$('.doc-oc-interaction').css('display','flex');
+    			if(section==1){
+    				$('.dococ-section-one').show();
+    			}else if(section==2){
+    				$('.dococ-section-two').show();
+    			}else if(section==3){
+    				$('.dococ-section-three').show();
+    			}else if(section==4){
+    				if(status=="angry"){
+    					$('.doc-oc-interaction').hide();
+    					$('.doc-oc-interaction-angry-ending').css('display','flex');
+    				}else{
+    					$('.doc-oc-interaction').hide();
+    					$('.doc-oc-interaction-happy-ending').css('display','flex');
+    				}
+    			}else if(section==5){
+    				$('.doc-oc-interaction').hide();
+    				$('.doc-oc-interaction-angry-ending').css('display','flex');
+    			}
+
+    		}
+
+				
+				$('.dococ-section-one').click(function(){
+					var dococ_respon;
+					input=$(this).attr('poin');
+					if(input=="positif"){
+						$('.status-pengunjung').text('- Salah satu pengunjung menganggap anda ramah');
+						dococ_respon = "Baik, saya mencoba mengenali diriku melalui cermin ini";
+							$('.conversation-slot-bawah').text('Permisi apa kabar pak');
+							$('.conversation-slot').html('<div class="text-warning">Permisi apa kabar pak</div>');
+				
+					}else if(input=="netral"){
+						$('.status-pengunjung').text('- Salah satu pengunjung senang berinteraksi dengan anda');
+							dococ_respon = "Mereka bilang cermin ini dapat menunjukkan jati diri seseorang";
+							$('.conversation-slot-bawah').text('Kalau boleh tau anda sedang apa di sini');
+							$('.conversation-slot').html('<div class="text-warning">Kalau boleh tau anda sedang apa di sini ?</div>');
+					}else if(input=="negatif"){
+							$('.status-pengunjung').text('- Salah satu pengunjung tidak suka sikap anda');
+							dococ_respon = "Belajarlah sopan santun nak !, kau tau fungsi cermin ini kan";
+							$('.conversation-slot-bawah').text('Anda ngapain disini');
+							$('.conversation-slot').html('<div class="text-warning">Anda ngapain disini ?</div>');
+					}
+					console.log(dococ_respon);
+
+					$('.dococ-section-one').prop('disabled','true');
+					setTimeout(function(){
+							$('.conversation-slot').html('<div>"'+dococ_respon+'"</div>');
+							$('.dococ-section-one').hide();
+							$('.dococ-section-two').show();
+					},2000);
+					section=2;
+					
+					
+				});
+				$('.dococ-section-two').click(function(){
+					console.log("Benar juga, tapi saat ini aku lebih memilih jadi baik saja");
+					$('.conversation-slot').html('<div class="text-warning">'+$(this).text()+'</div>');
+					$('.dococ-section-two').attr('disabled','true');
+
+					setTimeout(function(){
+							$('.conversation-slot').html('<div>"Benar juga, lagian saat ini aku lebih memilih jadi baik saja"</div>');
+							setTimeout(function(){
+								$('.conversation-slot').html('<div>"Aku tidak mau jadi jahat"</div>');
+								$('.dococ-section-two').hide();
+								$('.dococ-section-three').show();
+							},3100);
+					},2000);
+					
+					section=3;
+					$('.status-pengunjung').text('- Anda berinteraksi dengan pengunjung lainnya');
+				});
+
+				$('.dococ-section-three').click(function(){
+					var dococ_respon;
+					input=$(this).attr('poin');
+					if(input=="positif"){
+						$('.conversation-slot').html('<div class="text-warning" >Sampai jumpa semoga harimu menyenangkan</div>');
+						dococ_respon = "terima kasih semoga harimu menyenangkan";
+						status="happy";
+						$('.status-pengunjung').text('- Salah satu pengunjung kagum dengan kesopanan anda');
+				
+					}else if(input=="negatif"){
+						$('.conversation-slot').html('<div class="text-warning" >Saya mau pergi dulu dasar orang aneh</div>');
+						dococ_respon = "dasar kau ini, minggir sana";
+						status="angry";
+						$('.status-pengunjung').text('- Salah satu pengunjung tidak menyukai sikap anda');
+				
+					}
+					setTimeout(function(){
+							// $('.conversation-slot').prepend('<div>'+dococ_respon+'</div>');
+							$('.dococ-section-three').hide();
+							$('.katakan-sesuatu').hide();
+							$('.doc-oc-interaction').fadeOut();
+							console.log(status+'sas');
+							if(status=="angry"){
+								$('.doc-oc-interaction-angry-ending').css('display','flex');
+							}else if(status=="happy"){
+								$('.doc-oc-interaction-happy-ending').css('display','flex');
+							}
+							
+
+					},2000);
+					
+
+					$('.dococ-section-three').attr('disabled','true');
+					
+					section=4;
+
+					
+
+				});
+
+
+				// section1
+				// 	"oh iya, silahkan" because positive
+				// 	"kau tau lah, urusan bisnis" because netral
+				// 	"saya tidak yakin anda sudah belajar sopan santun" because negative
+				// section2
+				// 	"apakah menurutmu aku orang jahat" because netral
+				// 	"bagaimana pendapatmu tentang aku" because positive
+				// section3
+				// 	"kamu orang yang baik, lanjutkan jalan jalannya" positive
+				// 	"baiklah lain kali belajarlah sopan santun" negative
+
+				
+				// result
+
+				dococ_kecewa = "Tinggalkan aku sendiri";
+				dococ_happy = "Hai semoga pameran ini bermanfaat";
+				dococ_neutral = "Masih banyak karya yang perlu kamu liat";
+			</script>
+			<!-- <img src="dococ/angry.jpg" width="100%"> -->
+			
+
+		</div>
+		<!-- <div style="position:fixed;top:0px;height:100%;width:100%;">
+			<div class="testing-slick">
+				<div style="width:400px;height:300px;margin:20px;background-color: red;">item</div>
+				<div style="width:200px;height:300px;margin:20px;background-color: blue;">item</div>
+				<div style="width:200px;height:300px;margin:20px;background-color: orange;">item</div>
+				<div style="width:400px;height:300px;margin:20px;background-color: red;">item</div>
+				<div style="width:200px;height:300px;margin:20px;background-color: green;">item</div>
+				<div style="width:200px;height:300px;margin:20px;background-color: red;">item</div>
+				<div style="width:200px;height:300px;margin:20px;background-color: yellow;">item</div>
+				<div style="width:200px;height:300px;margin:20px;background-color: red;">item</div>
+				<div style="width:200px;height:300px;margin:20px;background-color: red;">item</div>
+			</div>
+		</div> -->
+		<div style="position:fixed;top:0;width:100%;height:100%;display:flex;" class="saran-mulai">
+			<div style="margin:auto auto;background-color:black;padding:15px 20px;text-align:center;">
+				<div>
+					<div>Rekomendasi, buka di browser chrome</div>
+					<div>Pastikan koneksi anda lancar</div>
+					<div>Nikmati pamerannya</div>
+				</div>
+				<br>
+				<div><button class="btn btn-outline-light tombol-mengerti">Mengerti</button></div>
+			</div>
+			
+
+		</div>
+
+		<div class="rekapan-infex" style="position:fixed;height:100%;width:100%;top:0;z-index:100;display:none;">
+			<div style="display:flex;height:100%;width:100%;">
+				<div style="margin:auto;height:100%;padding:25px;display:flex;flex-direction:column;background-image:url('textures/oldpaper.jpg');background-size:cover;">
+					<div style="color:#444038;margin:auto;width:100%;">
+						<div><h3 style="font-weight:bold;">"Surat Untuk Anda"</h3></div>
+						<div style="text-align:left">Hai </div>
+						<div style="text-align:left">Terima kasih telah mengunjungi pameran Infex 2022 ini</div>
+						<br>
+						<div style="text-align:left;font-weight:bold;">Rekapan Kunjungan anda :</div>
+						<div style="text-align:left" class="persentasi-kunjungan"></div>
+						<div style="text-align:left" class="status-pengunjung">- Anda tidak berinteraksi dengan pengunjung lainnya</div>
+
+						<br>
+						<div style="text-align:left;font-weight:bold;">*Beberapa spot telah diupdate, kamu bisa mengunjunginya lagi*</div>
+			
+					</div>
+					<div style="margin-top:auto;margin-bottom:30px;">
+						<div><button class="btn btn-dark go-to-panorama-1" style="font-weight:bold;">Kembali ke spot awal</button></div>
+						<div class="text-dark" style="font-weight:bold;margin:5px;">atau</div>
+						<div><button class="btn btn-dark go-to-panorama-14" style="font-weight:bold;">Tetap di spot ini</button></div>
+					</div>
+					
+				</div>
+
+			</div>
+		</div>
+		<script type="text/javascript">
+			button_click_sound = new Audio('audios/button_click.mp3');
+			foot_sound = new Audio('audios/foot.mp3');
+
+			$('button').click(function(){
+				button_click_sound.play()
+			});
+			// $(document).click(function(){
+			// 	alert('fuck')
+			// });
+			$('.sound-on').click(function(){
+					
+					kondisi = $(this).attr('kondisi');
+					if(kondisi == "off"){
+						button_click_sound.play()
+						$(this).attr('kondisi','on')
+						document.getElementById('yourAudioTag').play();
+						$(this).find('img').attr('src','icons/sound_on.png')
+					}else{
+						button_click_sound.play()
+						$(this).attr('kondisi','off')
+						document.getElementById('yourAudioTag').pause();
+						
+						$(this).find('img').attr('src','icons/sound_off.png')
+					}
+				});
+		</script>
+		<script type="module">
+
+			function getParamValue(paramName)
+			      {
+			          
+			          var url = window.location.search.substring(1); //get rid of "?" in querystring
+			          var qArray = url.split('&'); //get key-value pairs
+			          // console.log(qArray)
+			          for (var i = 0; i < qArray.length; i++) 
+			          {
+			              var pArr = qArray[i].split('='); //split key and value
+			              if (pArr[0] == paramName) 
+			                  pArr[1] = decodeURI(pArr[1])
+			                  return pArr[1]; //return value
+			          }
+			      }
+
+
+			      var controls;
+
+			import * as THREE from "./testmobil/build/three.module.js";
+		      import { OrbitControls } from "./testmobil/build/OrbitControls.js";
+		      import { GLTFLoader } from "./testmobil/build/GLTFLoader.js";
+		      import { RGBELoader } from "./testmobil/build/RGBELoader.js";
+
+		      var camera, scene, renderer;
+		      var car;
+		      var gltf_loader = new GLTFLoader();
+		      
+		      THREE.Cache.clear();
+		      
+
+		      // var model = "gltf/nirmana3d/scene.gltf";
+		       var model = "testmobil/gltf/ahmadmuhsin/testkawat.gltf";
+
+		      var model2 = "testmobil/gltf/lamborghini_urus/scene.gltf";
+		      var model3 = "testmobil/gltf/peugeot_3008/scene.gltf";
+		      var model4 = "testmobil/gltf/ironman3d/scene.gltf";
+		      var model5 = "testmobil/gltf/dococ/scene.gltf";
+		      // console.log(model);
+
+		      init();
+		      loop();
+
+		      // const control2 = new OrbitControls(camera, renderer.domElement);
+		      // console.log(control2)
+		      function init() {
+		        const container = document.createElement("div");
+		        container.setAttribute("id", "preview-model");
+		        // document.body.appendChild(container);
+		        document.querySelector(".display-preview-3d-nirmana").appendChild(container);
+		        // ------------------------------------ *** ---------------------------------------
+
+		        camera = new THREE.PerspectiveCamera(
+		          75,
+		          window.innerWidth / window.innerHeight,
+		          0.1,
+		          1000
+		        );
+		        // camera.position.set(40, 20, 30);
+		        camera.position.set(20, 20, 50);
+		        scene = new THREE.Scene();
+		        scene.background = new THREE.Color(0xcccccc);
+
+		        renderer = new THREE.WebGLRenderer({ antialias: true });
+		        renderer.setPixelRatio(window.devicePixelRatio);
+		        renderer.setSize(window.innerWidth, window.innerHeight);
+		        renderer.outputEncoding = THREE.sRGBEncoding;
+
+		        container.appendChild(renderer.domElement);
+
+
+		        //getparam
+		        
+		      
+		      
+		      $('.pemilik-karya').text(getParamValue('filename'));
+
+		      // getparamend
+		        // LOAD MODEL
+
+		        // load model placeholder
+		        // gltf_loader.load(model, function (gltf) {
+		        //   car = gltf.scene;
+		        //   gltf.scene.scale.set(0.1, 0.1, 0.1);
+		        //   // scene.add(gltf.scene);
+
+		        //   render();
+		        // });
+
+		        var light = new THREE.PointLight(0xffffff, 0.0);
+		        light.position.set(100, 100, 100);
+		        scene.add(light);
+
+		        // LOAD TEXTURE
+		        const rgbe_loader = new RGBELoader();
+
+		        rgbe_loader.setDataType(THREE.UnsignedByteType);
+		        rgbe_loader.load("testmobil/hdr/AnyConv.com__hdri_corrected_darker (1).hdr", function (texture) {
+		          const pmremGenerator = new THREE.PMREMGenerator(renderer);
+		          const envMap = pmremGenerator.fromEquirectangular(texture).texture;
+
+		          scene.background = envMap;
+		          scene.environment = envMap;
+		          // renderer.toneMappingExposure = 500;
+		          render();
+		        });
+
+
+		        // VIEW CONTROLS
+		        controls = new OrbitControls(camera, renderer.domElement);
+		        controls.addEventListener("change", render);
+		        controls.minDistance = 20;
+		        controls.maxDistance = 70;
+		        controls.target.set(0, 0.5, 0);
+		        controls.mouseButtons = {
+		          LEFT: THREE.MOUSE.ROTATE,
+		          MIDDLE: THREE.MOUSE.DOLLY,
+		          RIGHT: THREE.MOUSE.ROTATE,
+		        };
+		        // controls.minPolarAngle = 0;
+		        // controls.maxPolarAngle = Math.PI / 2;
+		        controls.update();
+
+		        window.addEventListener("resize", onWindowResize, false);
+		      }
+
+		      function loadModel(modelPath, x = 0.1, y = 0.1, z = 0.1) {
+		        gltf_loader.load(modelPath, function (gltf) {
+		          scene.remove(car);
+		          car = gltf.scene;
+		          gltf.scene.scale.set(x, y, z);
+		          gltf.scene.position.set(0,-10,0);
+		          scene.add(car);
+		          $('.loading-screen').hide();
+		          render();
+
+		         
+		          
+		        });
+		      }
+
+		      function onWindowResize() {
+		        camera.aspect = window.innerWidth / window.innerHeight;
+		        camera.updateProjectionMatrix();
+		        renderer.setSize(window.innerWidth, window.innerHeight);
+		        render();
+		      }
+		      var render_count=0;
+
+		      function render() {
+		        renderer.render(scene, camera);
+		        // console.log(render_count++)
+		        render_count++;
+		        // console.log(render_count);
+		        if(render_count == 3){
+		          // console.log('render done');
+		          
+		        
+		        }
+		      }
+		      var reset_camera = 0;
+		      function loop() {
+		        requestAnimationFrame(loop);
+		        controls.update();
+		        renderer.render(scene, camera);
+		      }
+
+		    //   $(document).ready(function(){
+    		// 	$('.include-3d-preview').show();
+    		// 	loadModel(model,9,9,9);
+    		// });
+
+
+
+		      $('.close-include-3d-preview').click(function(){
+
+					scene.remove(car);
+					$('.include-3d-preview').hide();
+					camera.position.set(20, 20, 50);
+					$('.loading-screen').show();
+					// $('.iframe-3d').attr('src','');
+		})
+
+		var karya_3d =[{
+        "id": 55,
+        "study": "NIRMANA TRIMATRA",
+        "work_name": "Nirmana Tanah Liat",
+        "name": "AZKA KHUMAEROH NILNALMIN",
+        "type": "3D",
+        "sort": "55",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 56,
+        "study": "NIRMANA TRIMATRA",
+        "work_name": "Nirmana Kawat",
+        "name": "DELLA MAHANDIKA",
+        "type": "3D",
+        "sort": "56",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 57,
+        "study": "NIRMANA TRIMATRA",
+        "work_name": "Nirmana Yellow Board",
+        "name": "AHMAD MUHSIN",
+        "type": "3D",
+        "sort": "57",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 58,
+        "study": "NIRMANA TRIMATRA",
+        "work_name": "Nirmana Stik Eskrim",
+        "name": "KHOIRUNNISA DHIYA",
+        "type": "3D",
+        "sort": "58",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 59,
+        "study": "NIRMANA TRIMATRA",
+        "work_name": "Nirmana Sedotan",
+        "name": "Linda Wahyu Laila Shofiana",
+        "type": "3D",
+        "sort": "59",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 60,
+        "study": "NIRMANA TRIMATRA",
+        "work_name": "Nirmana White Foam",
+        "name": "RENDRA TYUS RANATHAN",
+        "type": "3D",
+        "sort": "60",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 61,
+        "study": "NIRMANA TRIMATRA",
+        "work_name": "Nirmana White Foam",
+        "name": "VERNANDA",
+        "type": "3D",
+        "sort": "61",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 62,
+        "study": "NIRMANA TRIMATRA",
+        "work_name": "Nirmana White Foam",
+        "name": "AZKA KHUMAEROH NILNALMIN",
+        "type": "3D",
+        "sort": "62",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 63,
+        "study": "NIRMANA TRIMATRA",
+        "work_name": "Nirmana Stik Eksrim",
+        "name": "DELLA MANHANDIKA",
+        "type": "3D",
+        "sort": "63",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 64,
+        "study": "NIRMANA TRIMATRA",
+        "work_name": "Nirmana Yellow Board",
+        "name": "Linda Wahyu Laila Shofiana",
+        "type": "3D",
+        "sort": "64",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 65,
+        "study": "NIRMANA TRIMATRA",
+        "work_name": "Nirmana Yellow Board",
+        "name": "RENDRA TYUS RANATHAN",
+        "type": "3D",
+        "sort": "65",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 66,
+        "study": "BAHAN & PROSES",
+        "work_name": "Table Lamp Laminasi Lidi",
+        "name": "Linda Wahyu Laila Shofiana",
+        "type": "3D",
+        "sort": "66",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 67,
+        "study": "BAHAN & PROSES",
+        "work_name": "Table Lamp Laminasi Lidi",
+        "name": "Violita Cucu Amartya",
+        "type": "3D",
+        "sort": "67",
+        "url": "",
+        "thumbnail": ""
+    }];
+
+    
+
+    function toTitleCaseVer(str) {
+			  return str.replace(
+			    /\w\S*/g,
+			    function(txt) {
+			      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+			    }
+			  );
+			}
+
+			
+		      window.getData=function(id,type){
+		      	button_click_sound.play()
+		      	var nama_kunjungan;
+		      	nama_kunjungan=String(id+''+type);
+    			
+    			if(kunjungan.includes(nama_kunjungan)){
+    				
+    			}else{
+    				kunjungan.push(nama_kunjungan);
+    			}
+    			console.log(kunjungan);
+
+			 // do whatever you want here
+			 var pather;
+			 var datake;
+			 var nama_pemilik;
+			 var nama_karya;
+			 if(type=="3d"){
+			 		datake=id-55;
+			 		console.log(datake);
+			 		nama_pemilik=karya_3d[datake]['name'];
+			 		nama_karya=karya_3d[datake]['work_name'];
+			 		
+			 		$('.3d-work-name').text(toTitleCaseVer(nama_karya));
+			 		$('.3d-name').text('By '+toTitleCaseVer(nama_pemilik));
+			 		$('.include-3d-preview').show();
+			 		// "testmobil/gltf/ahmadmuhsin/testkawat.gltf"
+			 		pather = "testmobil/gltfs/"+id+".gltf";
+    				loadModel(pather,6,6,6);
+    			}
+			};
+
+
+		</script>
+    	<script>
+
+
+    		
+    		
+
+			// var peserta = JSON.parse(localStorage.getItem('peserta'));
+			peserta = [
+    {
+        "id": 1,
+        "study": "NIRMANA 2D",
+        "work_name": "Biomorphic",
+        "name": "TABINAZZAHRA PRAGISA",
+        "type": "2D",
+        "sort": "1",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 2,
+        "study": "NIRMANA 2D",
+        "work_name": "Bidang Geometris",
+        "name": "RENDRA TYUS RANATHAN",
+        "type": "2D",
+        "sort": "2",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 3,
+        "study": "NIRMANA 2D",
+        "work_name": "Garis Ekspresif",
+        "name": "VIOLITA CUCU .A",
+        "type": "2D",
+        "sort": "3",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 4,
+        "study": "NIRMANA 2D",
+        "work_name": "Garis Geometri",
+        "name": "EMERALDA DIZA .P",
+        "type": "2D",
+        "sort": "4",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 5,
+        "study": "NIRMANA 2D",
+        "work_name": "Nirmana Mix",
+        "name": "AZKA KHUMAEROH NILNALMIN",
+        "type": "2D",
+        "sort": "5",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 6,
+        "study": "NIRMANA 2D",
+        "work_name": "Nirmana Mix",
+        "name": "ANISA SEPTI RATNASARI",
+        "type": "2D",
+        "sort": "6",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 7,
+        "study": "NIRMANA 2D",
+        "work_name": "Tekstur Mekanik",
+        "name": "VICI DYAH PURBANINGRUM",
+        "type": "2D",
+        "sort": "7",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 8,
+        "study": "NIRMANA 2D",
+        "work_name": "Titik",
+        "name": "BILQIS SEKARINI PUTRI",
+        "type": "2D",
+        "sort": "8",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 9,
+        "study": "NIRMANA 2D",
+        "work_name": "Warna",
+        "name": "NADIA DIPTYA WIDYASWATI",
+        "type": "2D",
+        "sort": "9",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 10,
+        "study": "BAHAN PROSES",
+        "work_name": "Laminasi Bahan",
+        "name": "LINDA WAHYU LAILA .S",
+        "type": "2D",
+        "sort": "10",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 11,
+        "study": "BAHAN PROSES",
+        "work_name": "Laminasi Bahan",
+        "name": "WISNU AJI PRABOWO",
+        "type": "2D",
+        "sort": "11",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 12,
+        "study": "FOTOGRAFI",
+        "work_name": "Teknik Double Exposure",
+        "name": "AHMAD MUHSIN",
+        "type": "2D",
+        "sort": "12",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 13,
+        "study": "FOTOGRAFI",
+        "work_name": "Teknik  DoF Sempit",
+        "name": "BAYU AJI SAMUDRA",
+        "type": "2D",
+        "sort": "13",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 14,
+        "study": "FOTOGRAFI",
+        "work_name": "Teknik Silhouette",
+        "name": "BILQIS SEKARINI PUTRI",
+        "type": "2D",
+        "sort": "14",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 15,
+        "study": "FOTOGRAFI",
+        "work_name": "Teknik Macro",
+        "name": "FEBRIAN AFRIK DWI",
+        "type": "2D",
+        "sort": "15",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 16,
+        "study": "FOTOGRAFI",
+        "work_name": "Teknik Brush Lighting",
+        "name": "NADIA DIPTYA WIDYASWATI",
+        "type": "2D",
+        "sort": "16",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 17,
+        "study": "FOTOGRAFI",
+        "work_name": "Teknik Slow Motion",
+        "name": "OVI MARATUS .S",
+        "type": "2D",
+        "sort": "17",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 18,
+        "study": "FOTOGRAFI",
+        "work_name": "Teknik Brush Lighting",
+        "name": "SHAFA SHAUQI A",
+        "type": "2D",
+        "sort": "18",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 19,
+        "study": "FOTOGRAFI",
+        "work_name": "Teknik Black and White",
+        "name": "STEFANI P",
+        "type": "2D",
+        "sort": "19",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 20,
+        "study": "FOTOGRAFI",
+        "work_name": "Teknik DoF Sempit",
+        "name": "VALENCIA AUDREY",
+        "type": "2D",
+        "sort": "20",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 21,
+        "study": "FOTOGRAFI",
+        "work_name": "Teknik Black and White",
+        "name": "VERNANDA SALSABILA",
+        "type": "2D",
+        "sort": "21",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 22,
+        "study": "PSRD",
+        "work_name": "Urban Sketch",
+        "name": "AHMAD MUHSIN",
+        "type": "2D",
+        "sort": "22",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 23,
+        "study": "PSRD",
+        "work_name": "Urban Sketch",
+        "name": "BILQIS SEKARINI PUTRI",
+        "type": "2D",
+        "sort": "23",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 24,
+        "study": "PSRD",
+        "work_name": "Urban Sketch",
+        "name": "DELLA MAHANDIKA MANUDI",
+        "type": "2D",
+        "sort": "24",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 25,
+        "study": "PSRD",
+        "work_name": "Urban Sketch",
+        "name": "NAURA NADINE CHALISYA",
+        "type": "2D",
+        "sort": "25",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 26,
+        "study": "PSRD",
+        "work_name": "Urban Sketch",
+        "name": "VERNANDA SALSABILA ZALFA",
+        "type": "2D",
+        "sort": "26",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 27,
+        "study": "TEKKOM",
+        "work_name": "Rencana Laintai",
+        "name": "DELLA MAHANDIKA",
+        "type": "2D",
+        "sort": "27",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 28,
+        "study": "TEKKOM",
+        "work_name": "Denah Furniture",
+        "name": "DELLA MAHANDIKA",
+        "type": "2D",
+        "sort": "28",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 29,
+        "study": "TEKKOM",
+        "work_name": "Perspektif Ruang Tamu",
+        "name": "KEZIA L.W",
+        "type": "2D",
+        "sort": "29",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 30,
+        "study": "TEKKOM",
+        "work_name": "Denah Furniture",
+        "name": "AILEEN FORTUNA",
+        "type": "2D",
+        "sort": "30",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 31,
+        "study": "MENGGAMBAR BENDA",
+        "work_name": "Pose Manusia",
+        "name": "DELLA MAHANDIKA",
+        "type": "2D",
+        "sort": "31",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 32,
+        "study": "MENGGAMBAR BENDA",
+        "work_name": "Anatomi Wajah",
+        "name": "LINDA WAHYU LAILA .S",
+        "type": "2D",
+        "sort": "32",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 33,
+        "study": "MENGGAMBAR BENDA",
+        "work_name": "Sketsa Interior",
+        "name": "NAURA NADINE CHALISYA",
+        "type": "2D",
+        "sort": "33",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 34,
+        "study": "MENGGAMBAR BENDA",
+        "work_name": "Tekstur Mekanik",
+        "name": "NADINE CHALISYA",
+        "type": "2D",
+        "sort": "34",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 35,
+        "study": "MENGGAMBAR BENDA",
+        "work_name": "Sketsa Produk",
+        "name": "OVI MARATUS .S",
+        "type": "2D",
+        "sort": "35",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 36,
+        "study": "MENGGAMBAR BENDA",
+        "work_name": "Anatomi Wajah",
+        "name": "RENDRA TYUS RANATHAN",
+        "type": "2D",
+        "sort": "36",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 37,
+        "study": "MENGGAMBAR BENDA",
+        "work_name": "Interior Cafe",
+        "name": "TABINAZZAHRA PRAGISA",
+        "type": "2D",
+        "sort": "37",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 38,
+        "study": "MENGGAMBAR BENDA",
+        "work_name": "Tanaman",
+        "name": "VIOLITA CUCU",
+        "type": "2D",
+        "sort": "38",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 39,
+        "study": "MENGGAMBAR BENDA",
+        "work_name": "Anatomi Wajah",
+        "name": "VIOLITA CUCU",
+        "type": "2D",
+        "sort": "39",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 40,
+        "study": "MENGGAMBAR BENDA",
+        "work_name": "Tanaman",
+        "name": "WISNU AJI PRABOWO",
+        "type": "2D",
+        "sort": "40",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 41,
+        "study": "MENGGAMBAR PROYEKSI",
+        "work_name": "Perspektif 3 Titik Hilang",
+        "name": "ADINDA TRISYANDIT",
+        "type": "2D",
+        "sort": "41",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 42,
+        "study": "MENGGAMBAR PROYEKSI",
+        "work_name": "Golden Ratio Perspektif",
+        "name": "ADITYA REVI SETIAWAN",
+        "type": "2D",
+        "sort": "42",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 43,
+        "study": "MENGGAMBAR PROYEKSI",
+        "work_name": "Aksonometri Kursi Perspektif",
+        "name": "AHMAD MUHSIN",
+        "type": "2D",
+        "sort": "43",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 44,
+        "study": "MENGGAMBAR PROYEKSI",
+        "work_name": "Perspektif Kamar Tidur",
+        "name": "ANISA SEPTI .R",
+        "type": "2D",
+        "sort": "44",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 45,
+        "study": "MENGGAMBAR PROYEKSI",
+        "work_name": "Proyeksi Furniture",
+        "name": "CARIMA ADIBATUL HUSNA",
+        "type": "2D",
+        "sort": "45",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 46,
+        "study": "MENGGAMBAR PROYEKSI",
+        "work_name": "Perspektif and Aksonometri Apartemen",
+        "name": "CARIMA ADIBATUL HUSNA",
+        "type": "2D",
+        "sort": "46",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 47,
+        "study": "MENGGAMBAR PROYEKSI",
+        "work_name": "Aksonometri Dasar Perspektif",
+        "name": "DELLA MAHANDIKA",
+        "type": "2D",
+        "sort": "47",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 48,
+        "study": "MENGGAMBAR PROYEKSI",
+        "work_name": "Perspektif 2 Titik Hilang",
+        "name": "LINDA WAHYU LAILA",
+        "type": "2D",
+        "sort": "48",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 49,
+        "study": "MENGGAMBAR PROYEKSI",
+        "work_name": "Perspektif 2 Titik Hilang",
+        "name": "RENDRA TYUS RANATHAN",
+        "type": "2D",
+        "sort": "49",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 50,
+        "study": "KOMPUTER GRAFIS",
+        "work_name": "Poster",
+        "name": "ADITYA REVI SETIAWAN",
+        "type": "2D",
+        "sort": "50",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 51,
+        "study": "KOMPUTER GRAFIS",
+        "work_name": "Poster",
+        "name": "BINTANG MANAHIL",
+        "type": "2D",
+        "sort": "51",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 52,
+        "study": "KOMPUTER GRAFIS",
+        "work_name": "Poster Uas",
+        "name": "NADIA DIPTYA",
+        "type": "2D",
+        "sort": "52",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 53,
+        "study": "KOMPUTER GRAFIS",
+        "work_name": "Poster Iklan",
+        "name": "SHAFA SHAUQI",
+        "type": "2D",
+        "sort": "53",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 54,
+        "study": "KOMPUTER GRAFIS",
+        "work_name": "Ilustrasi",
+        "name": "NADIA DIPTYA",
+        "type": "2D",
+        "sort": "54",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 55,
+        "study": "NIRMANA TRIMATRA",
+        "work_name": "Nirmana Tanah Liat",
+        "name": "AZKA KHUMAEROH NILNALMIN",
+        "type": "3D",
+        "sort": "55",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 56,
+        "study": "NIRMANA TRIMATRA",
+        "work_name": "Nirmana Kawat",
+        "name": "DELLA MAHANDIKA",
+        "type": "3D",
+        "sort": "56",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 57,
+        "study": "NIRMANA TRIMATRA",
+        "work_name": "Nirmana Yellow Board",
+        "name": "AHMAD MUHSIN",
+        "type": "3D",
+        "sort": "57",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 58,
+        "study": "NIRMANA TRIMATRA",
+        "work_name": "Nirmana Stik Eskrim",
+        "name": "KHOIRUNNISA DHIYA",
+        "type": "3D",
+        "sort": "58",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 59,
+        "study": "NIRMANA TRIMATRA",
+        "work_name": "Nirmana Sedotan",
+        "name": "Linda Wahyu Laila Shofiana",
+        "type": "3D",
+        "sort": "59",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 60,
+        "study": "NIRMANA TRIMATRA",
+        "work_name": "Nirmana White Foam",
+        "name": "RENDRA TYUS RANATHAN",
+        "type": "3D",
+        "sort": "60",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 61,
+        "study": "NIRMANA TRIMATRA",
+        "work_name": "Nirmana White Foam",
+        "name": "VERNANDA",
+        "type": "3D",
+        "sort": "61",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 62,
+        "study": "NIRMANA TRIMATRA",
+        "work_name": "Nirmana White Foam",
+        "name": "AZKA KHUMAEROH NILNALMIN",
+        "type": "3D",
+        "sort": "62",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 63,
+        "study": "NIRMANA TRIMATRA",
+        "work_name": "Nirmana Stik Eksrim",
+        "name": "DELLA MANHANDIKA",
+        "type": "3D",
+        "sort": "63",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 64,
+        "study": "NIRMANA TRIMATRA",
+        "work_name": "Nirmana Yellow Board",
+        "name": "Linda Wahyu Laila Shofiana",
+        "type": "3D",
+        "sort": "64",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 65,
+        "study": "NIRMANA TRIMATRA",
+        "work_name": "Nirmana Yellow Board",
+        "name": "RENDRA TYUS RANATHAN",
+        "type": "3D",
+        "sort": "65",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 66,
+        "study": "BAHAN & PROSES",
+        "work_name": "Table Lamp Laminasi Lidi",
+        "name": "Linda Wahyu Laila Shofiana",
+        "type": "3D",
+        "sort": "66",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 67,
+        "study": "BAHAN & PROSES",
+        "work_name": "Table Lamp Laminasi Lidi",
+        "name": "Violita Cucu Amartya",
+        "type": "3D",
+        "sort": "67",
+        "url": "",
+        "thumbnail": ""
+    }
+];
+			console.log(peserta)
+			
+			$('.tombol-mengerti').click(function(){
+				$('.saran-mulai').fadeOut();
+				setTimeout(function(){
+					$('.changeable-self-talk').text('Geser layar untuk melihat lihat');
+					$('.self-talk').fadeIn(100);
+					setTimeout(function(){
+							$('.self-talk').fadeOut();
+							setTimeout(function(){
+								$('.changeable-self-talk').text('Klik poin hijau untuk bergerak');
+								$('.self-talk').fadeIn();
+								setTimeout(function(){
+									
+									$('.self-talk').fadeOut();
+								},3000);
+							},1000);
+					},3000);
+				},1000);
+			});
+			
+			// window.onbeforeunload = function() { return "Your work will be lost."; };
+
+    		// function getWall(start,end){
+    		// 	alert(start+' '+end);
+    		// }
+    		$('.close-preview-grup').click(function(){
+    			$('.preview-group').hide();
+
+    		});
+
+    		function toTitleCase(str) {
+			  return str.replace(
+			    /\w\S*/g,
+			    function(txt) {
+			      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+			    }
+			  );
+			}
+			total_kunjungan_getwall=12;
+			kunjungan=[];
+    		function getWall(start, end) {
+    			console.log($('.karya-scrollur-mobile').scrollLeft()+'dd');
+    			var element = document.getElementById("mobile-scrollur");
+
+    			element.scrollIntoView({block: "end"});
+    			button_click_sound.play();
+    			nama_kunjungan=String(start+''+end);
+    			
+    			if(kunjungan.includes(nama_kunjungan)){
+    				
+    			}else{
+    				kunjungan.push(nama_kunjungan);
+    			}
+
+    			
+    			console.log(kunjungan);
+    			console.log(nama_kunjungan);
+    			
+    			$('.preview-group').fadeIn(100);
+    			$('.preview-group').css('display','flex');
+    			$('.preview-group-loader').css('display','flex');
+				// console.log(start + ' ' + end);
+
+    			let realStartId = start;
+				let realEndId = end;
+
+				// loop range, ex: 31 - 35 -> result = [31, 32, 33, 34, 35]
+				let list = [];
+				for (let i = realStartId; i <= realEndId; i++) {
+					list.push(i);
+				}
+				$('.karya-scrollur-mobile').empty();
+
+				$('.karya-scrollur').empty();
+				// $('.karya-scrollur-child').remove();
+				karya_counter=0;
+				karya_loaded=0;
+
+
+				list.forEach(function (data) {
+					karya_counter++;
+					// alert('assss')
+					// di class karya dikasi id/unique attribute, ketika di klik jalankan fungsi getData()
+					// console.log(peserta[data - 1]);
+					// console.log(window.location.href);
+					// console.log('hello');
+					
+					name = toTitleCase(peserta[data-1]['name']);
+					study = peserta[data-1]['study'];
+					work_name = peserta[data-1]['work_name'];
+					$('.study-prodi').text(study);
+
+					$('.karya-scrollur-mobile').append(`
+								
+						<div style="height:100%;display:inline-block;margin-left:10px;margin-right:20px;">
+							<img src="`+window.location.href+`image/${data}.jpg" style="height:80%;">
+							<div style="padding-bottom:10px;">
+								<div style="margin-top:15px"><text style="font-weight:bold;">`+peserta[data-1]['work_name']+`</text></div>
+								<div style=""><text style="font-style:italic">By `+name+`</text></div>
+							</div>
+
+						</div>
+					`);
+
+
+					$('.karya-scrollur').append(`
+								<div style="margin:20px;" class="karya-scrollur-child">
+									<div>
+										<img src="`+window.location.href+`image/${data}.jpg" height="300px">
+									</div>
+									<div>
+										<div style="margin-top:20px"><text style="font-weight:bold;">`+peserta[data-1]['work_name']+`</text></div>
+								<div style=""><text style="font-style:italic">By `+name+`</text></div>
+									</div>
+								</div>
+					`);
+
+					// initiatingflickity;
+					
+				});
+				
+
+				// $image = ;
+				
+				$('.karya-scrollur').flickity({freeScroll:true});
+
+				$('.karya-scrollur').find('img').on('load', function(){
+					$('.karya-scrollur').flickity('resize');
+				});
+    			
+				
+				
+    		}
+
+    		$('.close-preview-grup').click(function(){
+    			$('.karya-scrollur').flickity('destroy');
+    			
+    			
+    		});
+
+    		
+
+    		$('.go-to-panorama-1').click(function(){
+    			viewer.setPanorama( Panorama_1 );
+    			$('.rekapan-infex').hide();
+    		});
+    		$('.go-to-panorama-14').click(function(){
+    			viewer.setPanorama( Panorama_14 );
+    			$('.rekapan-infex').hide();
+    		});
+    		// getWall(31,35);
+    		// function getData(id,type){
+
+    		// 	// alert(id+''+type);
+
+    		// 	if(type=="3d"){
+    		// 		alert('yabeh');
+    		// 		return "Success";
+    		// 	}
+    		// }
+
+
+    		var mirror=0
+    		var mirror2=0;
+    		var waktu=0;
+    		function selfTalk(string){
+    			dialog_mirror = 
+    			['Katanya cermin ini bisa menunjukkan sisi gelap seseorang',
+    			'Uhhmm aneh seperti ada energi mistis diarea cermin ini',
+    			'Terlihat sesosok berlengan 8',
+    			'Apakah ini markas penyihir',
+    			'Bisa jadi hanyalah sebuah ilusi',
+    			'Ruangan ini benar2 aneh'
+    			];
+
+    			dialog_mirror2 = 
+    			['Benar sekali, cermin ini bisa menunjukkan sisi gelap kita',
+    			'Terlihat sesorang mempunyai lengan robot',
+    			'Aku harap dia tidak akan menyakiti siapa siapa',
+    			'Aku harus bicara dengannya',
+    			'Bisa jadi hanyalah sebuah ilusi',
+    			'Ruangan ini benar2 aneh'
+    			];
+
+    			waktu=0;
+    			if(string=="cermin"){
+    				
+    				if(mirror<6){
+    					mirror=mirror+1;
+    				}else{
+    					mirror=1;
+    				}
+    				$('.changeable-self-talk').text(dialog_mirror[mirror-1]);
+    			}else if(string=="cermin2"){
+    				$('.changeable-self-talk').text('Terlihat keren dari sisi ini');
+    			}else if(string=="cermin3"){
+    				if(mirror2<4){
+    					mirror2=mirror2+1;
+    				}else{
+    					mirror2=1;
+    				}
+    				$('.changeable-self-talk').text(dialog_mirror2[mirror2-1]);
+    			}else if(string=="poster"){
+    				$('.changeable-self-talk').text('kapan lagi..aku kan join secepatnya');
+    			}else{
+    				$('.changeable-self-talk').text(string);
+    			}
+
+    			
+    			
+    			
+    			$('.self-talk').show();
+    			$('.self-talk').attr('visiba','yes');
+    			
+    			
+
+    		}
+    		
+    		$('.self-talk').click(function(){
+    			$(this).fadeOut(100);
+    			$('.self-talk').attr('visiba','no');
+    		});
+
+
+    		
+
+    		$('.close-doc-oc').click(function(){
+    			$('.doc-oc-interaction').hide();
+    			$('.doc-oc-interaction-angry-ending').hide();
+    			$('.doc-oc-interaction-happy-ending').hide();
+    		});
+
+
+
+
+
+
+    		
+
+
+            var container = document.querySelector( '#container' );
+			/*panolens*/
+var viewer = new PANOLENS.Viewer( { container: container , controlBar: false,  output: 'console' , autoHideInfospot: false, } );
+/*panolens-end*/
+			
+
+
+			viewer.addUpdateCallback(function(){});
+			
+
+			
+    		
+			
+
+    		
+			/*panoramas*/
+var Panorama_1 = new PANOLENS.ImagePanorama( "panoramas/Panorama_1.jpg" );
+						Panorama_1.addEventListener('progress', function(e){
+							$("#loading").show();
+						});
+						Panorama_1.addEventListener('load', function(e){
+							$("#loading").fadeOut();
+						});
+						Panorama_1.addEventListener('click', function(e){
+						});
+
+var infospotPanorama_10 = new PANOLENS.Infospot( 512, hotspotIcons[1].data, true );
+							infospotPanorama_10.position.set( -115.41, -696.89, -4942.49 );
+							Panorama_1.add(infospotPanorama_10);
+infospotPanorama_10.addEventListener('click', function(){
+viewer.setPanorama( Panorama_2 );
+});
+viewer.add( Panorama_1 );
+var Panorama_2 = new PANOLENS.ImagePanorama( "panoramas/Panorama_2.jpg" );
+						Panorama_2.addEventListener('progress', function(e){
+							$("#loading").show();
+						});
+						Panorama_2.addEventListener('load', function(e){
+							$("#loading").fadeOut();
+						});
+						Panorama_2.addEventListener('click', function(e){
+						});
+
+var infospotPanorama_20 = new PANOLENS.Infospot( 512, hotspotIcons[1].data, true );
+							infospotPanorama_20.position.set( 35.61, -611.40, -4956.79 );
+							Panorama_2.add(infospotPanorama_20);
+infospotPanorama_20.addEventListener('click', function(){
+viewer.setPanorama( Panorama_3 );
+viewer.setPanorama( Panorama_3 );
+});
+var infospotPanorama_21 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_21.position.set( -2528.58, -172.83, -4303.48 );
+							Panorama_2.add(infospotPanorama_21);
+infospotPanorama_21.addEventListener('click', function(){
+getWall(31,35);
+});
+var infospotPanorama_22 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_22.position.set( 1110.08, 135.48, -4866.34 );
+							Panorama_2.add(infospotPanorama_22);
+infospotPanorama_22.addEventListener('click', function(){
+viewer.setPanorama( Panorama_3 );
+});
+var infospotPanorama_23 = new PANOLENS.Infospot( 512, hotspotIcons[1].data, true );
+							infospotPanorama_23.position.set( -25.48, -1153.43, 4863.26 );
+							Panorama_2.add(infospotPanorama_23);
+infospotPanorama_23.addEventListener('click', function(){
+viewer.setPanorama( Panorama_1 );
+});
+viewer.add( Panorama_2 );
+var Panorama_3 = new PANOLENS.ImagePanorama( "panoramas/Panorama_3.jpg" );
+						Panorama_3.addEventListener('progress', function(e){
+							$("#loading").show();
+						});
+						Panorama_3.addEventListener('load', function(e){
+							$("#loading").fadeOut();
+						});
+						Panorama_3.addEventListener('click', function(e){
+						});
+
+var infospotPanorama_30 = new PANOLENS.Infospot( 512, hotspotIcons[1].data, true );
+							infospotPanorama_30.position.set( -1618.33, -532.96, -4692.87 );
+							Panorama_3.add(infospotPanorama_30);
+infospotPanorama_30.addEventListener('click', function(){
+viewer.setPanorama( Panorama_4 );
+});
+var infospotPanorama_31 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_31.position.set( 2973.30, 303.21, -4001.94 );
+							Panorama_3.add(infospotPanorama_31);
+infospotPanorama_31.addEventListener('click', function(){
+getWall(36,40);
+});
+var infospotPanorama_32 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_32.position.set( -4726.87, 365.66, 1579.06 );
+							Panorama_3.add(infospotPanorama_32);
+infospotPanorama_32.addEventListener('click', function(){
+getWall(31,35);
+});
+var infospotPanorama_33 = new PANOLENS.Infospot( 512, hotspotIcons[1].data, true );
+							infospotPanorama_33.position.set( -108.44, -1307.00, 4816.75 );
+							Panorama_3.add(infospotPanorama_33);
+infospotPanorama_33.addEventListener('click', function(){
+viewer.setPanorama( Panorama_2 );
+});
+var infospotPanorama_34 = new PANOLENS.Infospot( 512, hotspotIcons[1].data, true );
+							infospotPanorama_34.position.set( 662.47, -1622.61, -4674.12 );
+							Panorama_3.add(infospotPanorama_34);
+infospotPanorama_34.addEventListener('click', function(){
+viewer.setPanorama( Panorama_3_setengah );
+});
+var infospotPanorama_35 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_35.position.set( -2643.24, -181.90, -4228.60 );
+							Panorama_3.add(infospotPanorama_35);
+infospotPanorama_35.addEventListener('click', function(){
+selfTalk("harus mendekat untuk berbicara");
+});
+var infospotPanorama_36 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_36.position.set( -3760.97, 19.13, -3288.58 );
+							Panorama_3.add(infospotPanorama_36);
+infospotPanorama_36.addEventListener('click', function(){
+selfTalk("cermin");
+
+});
+var infospotPanorama_37 = new PANOLENS.Infospot( 512, hotspotIcons[1].data, true );
+							infospotPanorama_37.position.set( -1666.51, -1149.11, -4564.75 );
+							Panorama_3.add(infospotPanorama_37);
+infospotPanorama_37.addEventListener('click', function(){
+viewer.setPanorama( Panorama_3_setengah );
+});
+viewer.add( Panorama_3 );
+var Panorama_4 = new PANOLENS.ImagePanorama( "panoramas/Panorama_4.jpg" );
+						Panorama_4.addEventListener('progress', function(e){
+							$("#loading").show();
+						});
+						Panorama_4.addEventListener('load', function(e){
+							$("#loading").fadeOut();
+						});
+						Panorama_4.addEventListener('click', function(e){
+						});
+
+var infospotPanorama_40 = new PANOLENS.Infospot( 512, hotspotIcons[1].data, true );
+							infospotPanorama_40.position.set( -2904.21, -723.00, -4002.67 );
+							Panorama_4.add(infospotPanorama_40);
+infospotPanorama_40.addEventListener('click', function(){
+viewer.setPanorama( Panorama_5 );
+});
+var infospotPanorama_41 = new PANOLENS.Infospot( 512, hotspotIcons[1].data, true );
+							infospotPanorama_41.position.set( 1541.09, -911.36, 4663.48 );
+							Panorama_4.add(infospotPanorama_41);
+infospotPanorama_41.addEventListener('click', function(){
+viewer.setPanorama( Panorama_3 );
+});
+var infospotPanorama_42 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_42.position.set( 3269.92, 221.08, 3765.89 );
+							Panorama_4.add(infospotPanorama_42);
+infospotPanorama_42.addEventListener('click', function(){
+viewer.setPanorama( Panorama_3_setengah );
+});
+var infospotPanorama_43 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_43.position.set( -1214.42, 68.44, -4841.10 );
+							Panorama_4.add(infospotPanorama_43);
+infospotPanorama_43.addEventListener('click', function(){
+viewer.setPanorama( Panorama_5 );
+});
+var infospotPanorama_44 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_44.position.set( -4868.56, 113.54, -1105.13 );
+							Panorama_4.add(infospotPanorama_44);
+infospotPanorama_44.addEventListener('click', function(){
+getWall(22,26);
+});
+var infospotPanorama_45 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_45.position.set( -2254.87, -255.78, 4443.76 );
+							Panorama_4.add(infospotPanorama_45);
+infospotPanorama_45.addEventListener('click', function(){
+dococ();
+});
+var infospotPanorama_46 = new PANOLENS.Infospot( 512, hotspotIcons[1].data, true );
+							infospotPanorama_46.position.set( 2465.09, -1239.77, 4163.94 );
+							Panorama_4.add(infospotPanorama_46);
+infospotPanorama_46.addEventListener('click', function(){
+viewer.setPanorama( Panorama_3_setengah );
+});
+var infospotPanorama_47 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_47.position.set( -3504.11, 96.27, 3551.92 );
+							Panorama_4.add(infospotPanorama_47);
+infospotPanorama_47.addEventListener('click', function(){
+selfTalk("cermin2");
+});
+viewer.add( Panorama_4 );
+var Panorama_5 = new PANOLENS.ImagePanorama( "panoramas/Panorama_5.jpg" );
+						Panorama_5.addEventListener('progress', function(e){
+							$("#loading").show();
+						});
+						Panorama_5.addEventListener('load', function(e){
+							$("#loading").fadeOut();
+						});
+						Panorama_5.addEventListener('click', function(e){
+						});
+
+var infospotPanorama_50 = new PANOLENS.Infospot( 512, hotspotIcons[1].data, true );
+							infospotPanorama_50.position.set( -4502.23, -1213.36, 1783.07 );
+							Panorama_5.add(infospotPanorama_50);
+infospotPanorama_50.addEventListener('click', function(){
+viewer.setPanorama( Panorama_6 );
+});
+var infospotPanorama_51 = new PANOLENS.Infospot( 512, hotspotIcons[1].data, true );
+							infospotPanorama_51.position.set( 3195.45, -777.48, 3758.96 );
+							Panorama_5.add(infospotPanorama_51);
+infospotPanorama_51.addEventListener('click', function(){
+viewer.setPanorama( Panorama_4 );
+});
+var infospotPanorama_52 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_52.position.set( -13.35, 126.28, 4994.34 );
+							Panorama_5.add(infospotPanorama_52);
+infospotPanorama_52.addEventListener('click', function(){
+getWall(22,26);
+});
+var infospotPanorama_53 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_53.position.set( 1484.05, -602.04, -4730.04 );
+							Panorama_5.add(infospotPanorama_53);
+infospotPanorama_53.addEventListener('click', function(){
+getWall(1,9);
+});
+var infospotPanorama_54 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_54.position.set( -4776.88, -241.94, -1427.82 );
+							Panorama_5.add(infospotPanorama_54);
+infospotPanorama_54.addEventListener('click', function(){
+getData(67,"3d");
+});
+var infospotPanorama_55 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_55.position.set( -3983.55, -651.56, -2941.76 );
+							Panorama_5.add(infospotPanorama_55);
+infospotPanorama_55.addEventListener('click', function(){
+getData(66,'3d');
+});
+var infospotPanorama_56 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_56.position.set( 2112.55, 36.39, 4525.94 );
+							Panorama_5.add(infospotPanorama_56);
+infospotPanorama_56.addEventListener('click', function(){
+dococ();
+});
+var infospotPanorama_57 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_57.position.set( 4960.85, 507.27, -193.28 );
+							Panorama_5.add(infospotPanorama_57);
+infospotPanorama_57.addEventListener('click', function(){
+selfTalk("poster");
+});
+viewer.add( Panorama_5 );
+var Panorama_6 = new PANOLENS.ImagePanorama( "panoramas/Panorama_6.jpg" );
+						Panorama_6.addEventListener('progress', function(e){
+							$("#loading").show();
+						});
+						Panorama_6.addEventListener('load', function(e){
+							$("#loading").fadeOut();
+						});
+						Panorama_6.addEventListener('click', function(e){
+						});
+
+var infospotPanorama_60 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_60.position.set( -4995.34, 82.64, -26.92 );
+							Panorama_6.add(infospotPanorama_60);
+infospotPanorama_60.addEventListener('click', function(){
+viewer.setPanorama( Panorama_6_detail );
+});
+var infospotPanorama_61 = new PANOLENS.Infospot( 512, hotspotIcons[1].data, true );
+							infospotPanorama_61.position.set( -782.35, -1431.19, 4716.52 );
+							Panorama_6.add(infospotPanorama_61);
+infospotPanorama_61.addEventListener('click', function(){
+viewer.setPanorama( Panorama_7 );
+});
+var infospotPanorama_62 = new PANOLENS.Infospot( 512, hotspotIcons[1].data, true );
+							infospotPanorama_62.position.set( 4256.44, -1853.51, -1845.62 );
+							Panorama_6.add(infospotPanorama_62);
+infospotPanorama_62.addEventListener('click', function(){
+viewer.setPanorama( Panorama_5 );
+});
+var infospotPanorama_63 = new PANOLENS.Infospot( 512, hotspotIcons[1].data, true );
+							infospotPanorama_63.position.set( 4718.93, -752.18, 1456.92 );
+							Panorama_6.add(infospotPanorama_63);
+infospotPanorama_63.addEventListener('click', function(){
+viewer.setPanorama( Panorama_4 );
+});
+var infospotPanorama_64 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_64.position.set( 3578.98, 74.13, -3478.28 );
+							Panorama_6.add(infospotPanorama_64);
+infospotPanorama_64.addEventListener('click', function(){
+viewer.setPanorama( Panorama_5 );
+});
+var infospotPanorama_65 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_65.position.set( -4400.29, 200.32, 2344.99 );
+							Panorama_6.add(infospotPanorama_65);
+infospotPanorama_65.addEventListener('click', function(){
+viewer.setPanorama( Panorama_6_detail );
+});
+var infospotPanorama_66 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_66.position.set( -4378.00, 132.17, -2394.62 );
+							Panorama_6.add(infospotPanorama_66);
+infospotPanorama_66.addEventListener('click', function(){
+viewer.setPanorama( Panorama_6_detail );
+});
+var infospotPanorama_67 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_67.position.set( -2804.58, -112.58, 4127.06 );
+							Panorama_6.add(infospotPanorama_67);
+infospotPanorama_67.addEventListener('click', function(){
+viewer.setPanorama( Panorama_8 );
+});
+var infospotPanorama_68 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_68.position.set( 1471.55, 210.76, 4766.43 );
+							Panorama_6.add(infospotPanorama_68);
+infospotPanorama_68.addEventListener('click', function(){
+viewer.setPanorama( Panorama_7 );
+});
+viewer.add( Panorama_6 );
+var Panorama_6_detail = new PANOLENS.ImagePanorama( "panoramas/Panorama_6_detail.jpg" );
+						Panorama_6_detail.addEventListener('progress', function(e){
+							$("#loading").show();
+						});
+						Panorama_6_detail.addEventListener('load', function(e){
+							$("#loading").fadeOut();
+						});
+						Panorama_6_detail.addEventListener('click', function(e){
+						});
+
+var infospotPanorama_6_detail0 = new PANOLENS.Infospot( 512, hotspotIcons[1].data, true );
+							infospotPanorama_6_detail0.position.set( 1950.64, -1197.39, 4442.73 );
+							Panorama_6_detail.add(infospotPanorama_6_detail0);
+infospotPanorama_6_detail0.addEventListener('click', function(){
+viewer.setPanorama( Panorama_7 );
+});
+var infospotPanorama_6_detail1 = new PANOLENS.Infospot( 512, hotspotIcons[1].data, true );
+							infospotPanorama_6_detail1.position.set( 4650.30, -841.17, -1614.34 );
+							Panorama_6_detail.add(infospotPanorama_6_detail1);
+infospotPanorama_6_detail1.addEventListener('click', function(){
+viewer.setPanorama( Panorama_5 );
+});
+var infospotPanorama_6_detail2 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_6_detail2.position.set( -4980.73, 233.57, -192.54 );
+							Panorama_6_detail.add(infospotPanorama_6_detail2);
+infospotPanorama_6_detail2.addEventListener('click', function(){
+getWall(50,52)
+});
+var infospotPanorama_6_detail3 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_6_detail3.position.set( -3355.45, 162.73, -3696.90 );
+							Panorama_6_detail.add(infospotPanorama_6_detail3);
+infospotPanorama_6_detail3.addEventListener('click', function(){
+getWall(27,30)
+});
+var infospotPanorama_6_detail4 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_6_detail4.position.set( -3384.05, 59.37, 3674.03 );
+							Panorama_6_detail.add(infospotPanorama_6_detail4);
+infospotPanorama_6_detail4.addEventListener('click', function(){
+getWall(53,54)
+});
+var infospotPanorama_6_detail5 = new PANOLENS.Infospot( 512, hotspotIcons[1].data, true );
+							infospotPanorama_6_detail5.position.set( -164.29, -783.60, 4929.55 );
+							Panorama_6_detail.add(infospotPanorama_6_detail5);
+infospotPanorama_6_detail5.addEventListener('click', function(){
+viewer.setPanorama( Panorama_8 );
+});
+viewer.add( Panorama_6_detail );
+var Panorama_7 = new PANOLENS.ImagePanorama( "panoramas/Panorama_7.jpg" );
+						Panorama_7.addEventListener('progress', function(e){
+							$("#loading").show();
+						});
+						Panorama_7.addEventListener('load', function(e){
+							$("#loading").fadeOut();
+						});
+						Panorama_7.addEventListener('click', function(e){
+						});
+
+var infospotPanorama_70 = new PANOLENS.Infospot( 512, hotspotIcons[1].data, true );
+							infospotPanorama_70.position.set( -2076.51, -1325.74, 4340.96 );
+							Panorama_7.add(infospotPanorama_70);
+infospotPanorama_70.addEventListener('click', function(){
+viewer.setPanorama( Panorama_8 );
+});
+var infospotPanorama_71 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_71.position.set( -3833.28, 283.87, 3182.78 );
+							Panorama_7.add(infospotPanorama_71);
+infospotPanorama_71.addEventListener('click', function(){
+viewer.setPanorama( Panorama_8 );
+});
+var infospotPanorama_72 = new PANOLENS.Infospot( 512, hotspotIcons[1].data, true );
+							infospotPanorama_72.position.set( 1689.34, -1223.11, -4535.27 );
+							Panorama_7.add(infospotPanorama_72);
+infospotPanorama_72.addEventListener('click', function(){
+viewer.setPanorama( Panorama_6 );
+});
+var infospotPanorama_73 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_73.position.set( 2481.31, 67.67, -4336.67 );
+							Panorama_7.add(infospotPanorama_73);
+infospotPanorama_73.addEventListener('click', function(){
+viewer.setPanorama( Panorama_5 );
+});
+var infospotPanorama_74 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_74.position.set( -2560.65, 90.34, -4286.52 );
+							Panorama_7.add(infospotPanorama_74);
+infospotPanorama_74.addEventListener('click', function(){
+viewer.setPanorama( Panorama_6_detail );
+});
+var infospotPanorama_75 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_75.position.set( -3979.61, 144.92, -3010.74 );
+							Panorama_7.add(infospotPanorama_75);
+infospotPanorama_75.addEventListener('click', function(){
+viewer.setPanorama( Panorama_6_detail );
+});
+var infospotPanorama_76 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_76.position.set( -4892.23, 163.01, -989.24 );
+							Panorama_7.add(infospotPanorama_76);
+infospotPanorama_76.addEventListener('click', function(){
+getWall(53,54);
+});
+var infospotPanorama_77 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_77.position.set( 1276.53, 140.68, 4821.53 );
+							Panorama_7.add(infospotPanorama_77);
+infospotPanorama_77.addEventListener('click', function(){
+viewer.setPanorama( Panorama_9 );
+});
+var infospotPanorama_78 = new PANOLENS.Infospot( 512, hotspotIcons[1].data, true );
+							infospotPanorama_78.position.set( 1148.19, -888.50, 4776.12 );
+							Panorama_7.add(infospotPanorama_78);
+infospotPanorama_78.addEventListener('click', function(){
+viewer.setPanorama( Panorama_9 );
+});
+var infospotPanorama_79 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_79.position.set( 4889.06, 451.96, 906.71 );
+							Panorama_7.add(infospotPanorama_79);
+infospotPanorama_79.addEventListener('click', function(){
+getWall(20,20);
+});
+var infospotPanorama_710 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_710.position.set( -1002.71, 110.35, 4892.19 );
+							Panorama_7.add(infospotPanorama_710);
+infospotPanorama_710.addEventListener('click', function(){
+viewer.setPanorama( Panorama_8 );
+});
+var infospotPanorama_711 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_711.position.set( 3295.79, 235.54, 3744.21 );
+							Panorama_7.add(infospotPanorama_711);
+infospotPanorama_711.addEventListener('click', function(){
+getWall(19,19)
+});
+var infospotPanorama_712 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_712.position.set( 4676.04, 252.77, -1723.84 );
+							Panorama_7.add(infospotPanorama_712);
+infospotPanorama_712.addEventListener('click', function(){
+getWall(21,21);
+});
+viewer.add( Panorama_7 );
+var Panorama_8 = new PANOLENS.ImagePanorama( "panoramas/Panorama_8.jpg" );
+						Panorama_8.addEventListener('progress', function(e){
+							$("#loading").show();
+						});
+						Panorama_8.addEventListener('load', function(e){
+							$("#loading").fadeOut();
+						});
+						Panorama_8.addEventListener('click', function(e){
+						});
+
+var infospotPanorama_80 = new PANOLENS.Infospot( 512, hotspotIcons[1].data, true );
+							infospotPanorama_80.position.set( 1803.04, -834.40, 4579.30 );
+							Panorama_8.add(infospotPanorama_80);
+infospotPanorama_80.addEventListener('click', function(){
+viewer.setPanorama( Panorama_9 );
+});
+var infospotPanorama_81 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_81.position.set( -3789.04, 232.01, 3240.65 );
+							Panorama_8.add(infospotPanorama_81);
+infospotPanorama_81.addEventListener('click', function(){
+getWall(12,16);
+});
+var infospotPanorama_82 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_82.position.set( -125.50, 146.42, 4987.67 );
+							Panorama_8.add(infospotPanorama_82);
+infospotPanorama_82.addEventListener('click', function(){
+getWall(17,18);
+});
+var infospotPanorama_83 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_83.position.set( -2475.12, 100.16, -4338.39 );
+							Panorama_8.add(infospotPanorama_83);
+infospotPanorama_83.addEventListener('click', function(){
+viewer.setPanorama( Panorama_6_detail );
+});
+var infospotPanorama_84 = new PANOLENS.Infospot( 512, hotspotIcons[1].data, true );
+							infospotPanorama_84.position.set( 1496.66, -1001.23, -4659.57 );
+							Panorama_8.add(infospotPanorama_84);
+infospotPanorama_84.addEventListener('click', function(){
+viewer.setPanorama( Panorama_6 );
+});
+var infospotPanorama_85 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_85.position.set( 2638.74, 33.44, -4238.46 );
+							Panorama_8.add(infospotPanorama_85);
+infospotPanorama_85.addEventListener('click', function(){
+viewer.setPanorama( Panorama_5 );
+});
+var infospotPanorama_86 = new PANOLENS.Infospot( 512, hotspotIcons[1].data, true );
+							infospotPanorama_86.position.set( 4411.68, -1824.26, -1471.28 );
+							Panorama_8.add(infospotPanorama_86);
+infospotPanorama_86.addEventListener('click', function(){
+viewer.setPanorama( Panorama_7 );
+});
+var infospotPanorama_87 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_87.position.set( 4951.93, 221.83, -597.60 );
+							Panorama_8.add(infospotPanorama_87);
+infospotPanorama_87.addEventListener('click', function(){
+viewer.setPanorama( Panorama_7 );
+});
+var infospotPanorama_88 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_88.position.set( 2194.42, 233.52, 4475.54 );
+							Panorama_8.add(infospotPanorama_88);
+infospotPanorama_88.addEventListener('click', function(){
+viewer.setPanorama( Panorama_9 );
+});
+var infospotPanorama_89 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_89.position.set( -4817.00, 468.76, -1220.35 );
+							Panorama_8.add(infospotPanorama_89);
+infospotPanorama_89.addEventListener('click', function(){
+getWall(12,16);
+});
+viewer.add( Panorama_8 );
+var Panorama_9 = new PANOLENS.ImagePanorama( "panoramas/Panorama_9.jpg" );
+						Panorama_9.addEventListener('progress', function(e){
+							$("#loading").show();
+						});
+						Panorama_9.addEventListener('load', function(e){
+							$("#loading").fadeOut();
+						});
+						Panorama_9.addEventListener('click', function(e){
+						});
+
+var infospotPanorama_90 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_90.position.set( 1400.34, 503.17, 4764.56 );
+							Panorama_9.add(infospotPanorama_90);
+infospotPanorama_90.addEventListener('click', function(){
+viewer.setPanorama( Panorama_9_detail );
+});
+var infospotPanorama_91 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_91.position.set( 4688.06, 225.41, 1695.53 );
+							Panorama_9.add(infospotPanorama_91);
+infospotPanorama_91.addEventListener('click', function(){
+viewer.setPanorama( Panorama_10 );
+});
+var infospotPanorama_92 = new PANOLENS.Infospot( 512, hotspotIcons[1].data, true );
+							infospotPanorama_92.position.set( -534.52, -851.59, -4894.53 );
+							Panorama_9.add(infospotPanorama_92);
+infospotPanorama_92.addEventListener('click', function(){
+viewer.setPanorama( Panorama_7 );
+});
+var infospotPanorama_93 = new PANOLENS.Infospot( 512, hotspotIcons[1].data, true );
+							infospotPanorama_93.position.set( -3251.60, -1274.06, -3572.11 );
+							Panorama_9.add(infospotPanorama_93);
+infospotPanorama_93.addEventListener('click', function(){
+viewer.setPanorama( Panorama_8 );
+});
+var infospotPanorama_94 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_94.position.set( -3923.79, 144.77, -3079.69 );
+							Panorama_9.add(infospotPanorama_94);
+infospotPanorama_94.addEventListener('click', function(){
+viewer.setPanorama( Panorama_8 );
+});
+var infospotPanorama_95 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_95.position.set( -4849.82, 173.96, 1165.88 );
+							Panorama_9.add(infospotPanorama_95);
+infospotPanorama_95.addEventListener('click', function(){
+getWall(17,18);
+});
+var infospotPanorama_96 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_96.position.set( 1216.54, 134.69, -4837.84 );
+							Panorama_9.add(infospotPanorama_96);
+infospotPanorama_96.addEventListener('click', function(){
+getWall(19,21);
+});
+var infospotPanorama_97 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_97.position.set( 1551.34, -725.24, 4694.24 );
+							Panorama_9.add(infospotPanorama_97);
+infospotPanorama_97.addEventListener('click', function(){
+viewer.setPanorama( Panorama_9_detail );
+});
+viewer.add( Panorama_9 );
+var Panorama_9_detail = new PANOLENS.ImagePanorama( "panoramas/Panorama_9_detail.jpg" );
+						Panorama_9_detail.addEventListener('progress', function(e){
+							$("#loading").show();
+						});
+						Panorama_9_detail.addEventListener('load', function(e){
+							$("#loading").fadeOut();
+						});
+						Panorama_9_detail.addEventListener('click', function(e){
+						});
+
+var infospotPanorama_9_detail0 = new PANOLENS.Infospot( 512, hotspotIcons[7].data, true );
+							infospotPanorama_9_detail0.position.set( 4907.94, 308.88, -853.45 );
+							Panorama_9_detail.add(infospotPanorama_9_detail0);
+infospotPanorama_9_detail0.addEventListener('click', function(){
+viewer.setPanorama( Panorama_10 );
+});
+var infospotPanorama_9_detail1 = new PANOLENS.Infospot( 512, hotspotIcons[1].data, true );
+							infospotPanorama_9_detail1.position.set( -909.90, -599.31, -4870.92 );
+							Panorama_9_detail.add(infospotPanorama_9_detail1);
+infospotPanorama_9_detail1.addEventListener('click', function(){
+viewer.setPanorama( Panorama_7 );
+});
+var infospotPanorama_9_detail2 = new PANOLENS.Infospot( 512, hotspotIcons[1].data, true );
+							infospotPanorama_9_detail2.position.set( -2071.98, -1553.96, -4270.27 );
+							Panorama_9_detail.add(infospotPanorama_9_detail2);
+infospotPanorama_9_detail2.addEventListener('click', function(){
+viewer.setPanorama( Panorama_9 );
+});
+var infospotPanorama_9_detail3 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_9_detail3.position.set( -3376.53, 25.91, -3683.41 );
+							Panorama_9_detail.add(infospotPanorama_9_detail3);
+infospotPanorama_9_detail3.addEventListener('click', function(){
+viewer.setPanorama( Panorama_8 );
+});
+var infospotPanorama_9_detail4 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_9_detail4.position.set( -476.02, -1099.37, 4850.40 );
+							Panorama_9_detail.add(infospotPanorama_9_detail4);
+infospotPanorama_9_detail4.addEventListener('click', function(){
+getData(58,"3d");
+});
+var infospotPanorama_9_detail5 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_9_detail5.position.set( 1669.11, -903.92, 4615.92 );
+							Panorama_9_detail.add(infospotPanorama_9_detail5);
+infospotPanorama_9_detail5.addEventListener('click', function(){
+getData(60,"3d");
+});
+var infospotPanorama_9_detail6 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_9_detail6.position.set( 3565.51, -835.59, 3393.92 );
+							Panorama_9_detail.add(infospotPanorama_9_detail6);
+infospotPanorama_9_detail6.addEventListener('click', function(){
+getData(62,"3d");
+});
+var infospotPanorama_9_detail7 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_9_detail7.position.set( 4676.85, -980.64, 1447.95 );
+							Panorama_9_detail.add(infospotPanorama_9_detail7);
+infospotPanorama_9_detail7.addEventListener('click', function(){
+getData(65,"3d");
+});
+var infospotPanorama_9_detail8 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_9_detail8.position.set( -2247.40, -1118.57, 4314.84 );
+							Panorama_9_detail.add(infospotPanorama_9_detail8);
+infospotPanorama_9_detail8.addEventListener('click', function(){
+getData(56,"3d");
+});
+viewer.add( Panorama_9_detail );
+var Panorama_10 = new PANOLENS.ImagePanorama( "panoramas/Panorama_10.jpg" );
+						Panorama_10.addEventListener('progress', function(e){
+							$("#loading").show();
+						});
+						Panorama_10.addEventListener('load', function(e){
+							$("#loading").fadeOut();
+						});
+						Panorama_10.addEventListener('click', function(e){
+						});
+
+var infospotPanorama_100 = new PANOLENS.Infospot( 512, hotspotIcons[1].data, true );
+							infospotPanorama_100.position.set( 434.11, -1374.38, 4780.68 );
+							Panorama_10.add(infospotPanorama_100);
+infospotPanorama_100.addEventListener('click', function(){
+viewer.setPanorama( Panorama_11 );
+});
+var infospotPanorama_101 = new PANOLENS.Infospot( 512, hotspotIcons[1].data, true );
+							infospotPanorama_101.position.set( -4689.21, -1633.67, -541.11 );
+							Panorama_10.add(infospotPanorama_101);
+infospotPanorama_101.addEventListener('click', function(){
+viewer.setPanorama( Panorama_9 );
+});
+var infospotPanorama_102 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_102.position.set( -4931.62, 4.75, -780.23 );
+							Panorama_10.add(infospotPanorama_102);
+infospotPanorama_102.addEventListener('click', function(){
+viewer.setPanorama( Panorama_9 );
+});
+var infospotPanorama_103 = new PANOLENS.Infospot( 512, hotspotIcons[1].data, true );
+							infospotPanorama_103.position.set( 1627.90, -248.30, 4713.06 );
+							Panorama_10.add(infospotPanorama_103);
+infospotPanorama_103.addEventListener('click', function(){
+viewer.setPanorama( Panorama_11 );
+});
+var infospotPanorama_104 = new PANOLENS.Infospot( 512, hotspotIcons[1].data, true );
+							infospotPanorama_104.position.set( -2256.50, -337.73, 4439.33 );
+							Panorama_10.add(infospotPanorama_104);
+infospotPanorama_104.addEventListener('click', function(){
+viewer.setPanorama( Panorama_11 );
+});
+var infospotPanorama_105 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_105.position.set( 313.22, -23.13, 4982.68 );
+							Panorama_10.add(infospotPanorama_105);
+infospotPanorama_105.addEventListener('click', function(){
+viewer.setPanorama( Panorama_11 );
+});
+viewer.add( Panorama_10 );
+var Panorama_11 = new PANOLENS.ImagePanorama( "panoramas/Panorama_11.jpg" );
+						Panorama_11.addEventListener('progress', function(e){
+							$("#loading").show();
+						});
+						Panorama_11.addEventListener('load', function(e){
+							$("#loading").fadeOut();
+						});
+						Panorama_11.addEventListener('click', function(e){
+						});
+
+var infospotPanorama_110 = new PANOLENS.Infospot( 512, hotspotIcons[1].data, true );
+							infospotPanorama_110.position.set( -3564.50, -1004.35, 3347.52 );
+							Panorama_11.add(infospotPanorama_110);
+infospotPanorama_110.addEventListener('click', function(){
+viewer.setPanorama( Panorama_12 );
+});
+var infospotPanorama_111 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_111.position.set( 1940.04, -416.87, 4584.08 );
+							Panorama_11.add(infospotPanorama_111);
+infospotPanorama_111.addEventListener('click', function(){
+viewer.setPanorama( Panorama_13 );
+});
+var infospotPanorama_112 = new PANOLENS.Infospot( 512, hotspotIcons[1].data, true );
+							infospotPanorama_112.position.set( 289.16, -529.22, 4953.23 );
+							Panorama_11.add(infospotPanorama_112);
+infospotPanorama_112.addEventListener('click', function(){
+viewer.setPanorama( Panorama_14 );
+});
+var infospotPanorama_113 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_113.position.set( -3371.91, -658.49, -3623.20 );
+							Panorama_11.add(infospotPanorama_113);
+infospotPanorama_113.addEventListener('click', function(){
+viewer.setPanorama( Panorama_9 );
+});
+var infospotPanorama_114 = new PANOLENS.Infospot( 512, hotspotIcons[1].data, true );
+							infospotPanorama_114.position.set( -584.69, -2270.60, -4411.41 );
+							Panorama_11.add(infospotPanorama_114);
+infospotPanorama_114.addEventListener('click', function(){
+viewer.setPanorama( Panorama_10 );
+});
+viewer.add( Panorama_11 );
+var Panorama_12 = new PANOLENS.ImagePanorama( "panoramas/Panorama_12.jpg" );
+						Panorama_12.addEventListener('progress', function(e){
+							$("#loading").show();
+						});
+						Panorama_12.addEventListener('load', function(e){
+							$("#loading").fadeOut();
+						});
+						Panorama_12.addEventListener('click', function(e){
+						});
+
+var infospotPanorama_120 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_120.position.set( 4883.73, -311.74, 1005.59 );
+							Panorama_12.add(infospotPanorama_120);
+infospotPanorama_120.addEventListener('click', function(){
+viewer.setPanorama( Panorama_13 );
+});
+var infospotPanorama_121 = new PANOLENS.Infospot( 512, hotspotIcons[1].data, true );
+							infospotPanorama_121.position.set( 2301.86, -689.24, 4374.42 );
+							Panorama_12.add(infospotPanorama_121);
+infospotPanorama_121.addEventListener('click', function(){
+viewer.setPanorama( Panorama_14 );
+});
+var infospotPanorama_122 = new PANOLENS.Infospot( 512, hotspotIcons[1].data, true );
+							infospotPanorama_122.position.set( 2056.84, -1057.48, -4425.56 );
+							Panorama_12.add(infospotPanorama_122);
+infospotPanorama_122.addEventListener('click', function(){
+viewer.setPanorama( Panorama_11 );
+});
+var infospotPanorama_123 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_123.position.set( -4037.06, -900.89, -2795.11 );
+							Panorama_12.add(infospotPanorama_123);
+infospotPanorama_123.addEventListener('click', function(){
+getData(61,"3d");
+});
+var infospotPanorama_124 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_124.position.set( -4757.52, -1169.38, -994.85 );
+							Panorama_12.add(infospotPanorama_124);
+infospotPanorama_124.addEventListener('click', function(){
+getData(63,"3d");
+});
+var infospotPanorama_125 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_125.position.set( -4637.35, -1316.90, 1289.30 );
+							Panorama_12.add(infospotPanorama_125);
+infospotPanorama_125.addEventListener('click', function(){
+getData(64,"3d");
+});
+var infospotPanorama_126 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_126.position.set( -3765.93, -1040.70, 3104.37 );
+							Panorama_12.add(infospotPanorama_126);
+infospotPanorama_126.addEventListener('click', function(){
+getData(59,"3d");
+});
+viewer.add( Panorama_12 );
+var Panorama_13 = new PANOLENS.ImagePanorama( "panoramas/Panorama_13.jpg" );
+						Panorama_13.addEventListener('progress', function(e){
+							$("#loading").show();
+						});
+						Panorama_13.addEventListener('load', function(e){
+							$("#loading").fadeOut();
+						});
+						Panorama_13.addEventListener('click', function(e){
+						});
+
+var infospotPanorama_130 = new PANOLENS.Infospot( 512, hotspotIcons[1].data, true );
+							infospotPanorama_130.position.set( -113.13, -955.68, 4898.00 );
+							Panorama_13.add(infospotPanorama_130);
+infospotPanorama_130.addEventListener('click', function(){
+viewer.setPanorama( Panorama_14 );
+});
+var infospotPanorama_131 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_131.position.set( -4962.87, 414.64, -363.89 );
+							Panorama_13.add(infospotPanorama_131);
+infospotPanorama_131.addEventListener('click', function(){
+viewer.setPanorama( Panorama_12 );
+});
+var infospotPanorama_132 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_132.position.set( -797.98, -977.20, -4827.54 );
+							Panorama_13.add(infospotPanorama_132);
+infospotPanorama_132.addEventListener('click', function(){
+viewer.setPanorama( Panorama_11 );
+});
+var infospotPanorama_133 = new PANOLENS.Infospot( 512, hotspotIcons[1].data, true );
+							infospotPanorama_133.position.set( -4693.56, -1533.79, -742.64 );
+							Panorama_13.add(infospotPanorama_133);
+infospotPanorama_133.addEventListener('click', function(){
+viewer.setPanorama( Panorama_12 );
+});
+var infospotPanorama_134 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_134.position.set( 3780.84, -1516.60, 2889.67 );
+							Panorama_13.add(infospotPanorama_134);
+infospotPanorama_134.addEventListener('click', function(){
+getData(55,"3d");
+});
+var infospotPanorama_135 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_135.position.set( 4642.13, -1811.90, 280.80 );
+							Panorama_13.add(infospotPanorama_135);
+infospotPanorama_135.addEventListener('click', function(){
+getData(57,"3d");
+});
+var infospotPanorama_136 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_136.position.set( -1480.72, 4.68, 4772.34 );
+							Panorama_13.add(infospotPanorama_136);
+infospotPanorama_136.addEventListener('click', function(){
+viewer.setPanorama( Panorama_14 );
+});
+var infospotPanorama_137 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_137.position.set( 1482.23, -4.46, 4771.94 );
+							Panorama_13.add(infospotPanorama_137);
+infospotPanorama_137.addEventListener('click', function(){
+viewer.setPanorama( Panorama_14 );
+});
+viewer.add( Panorama_13 );
+var Panorama_14 = new PANOLENS.ImagePanorama( "panoramas/Panorama_14.jpg" );
+						Panorama_14.addEventListener('progress', function(e){
+							$("#loading").show();
+						});
+						Panorama_14.addEventListener('load', function(e){
+							$("#loading").fadeOut();
+						});
+						Panorama_14.addEventListener('click', function(e){
+						});
+
+var infospotPanorama_140 = new PANOLENS.Infospot( 512, hotspotIcons[1].data, true );
+							infospotPanorama_140.position.set( -141.24, -611.68, -4951.22 );
+							Panorama_14.add(infospotPanorama_140);
+infospotPanorama_140.addEventListener('click', function(){
+viewer.setPanorama( Panorama_11 );
+});
+var infospotPanorama_141 = new PANOLENS.Infospot( 512, hotspotIcons[1].data, true );
+							infospotPanorama_141.position.set( -2740.82, -844.32, -4085.72 );
+							Panorama_14.add(infospotPanorama_141);
+infospotPanorama_141.addEventListener('click', function(){
+viewer.setPanorama( Panorama_12 );
+});
+var infospotPanorama_142 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_142.position.set( 1297.36, -581.19, -4782.61 );
+							Panorama_14.add(infospotPanorama_142);
+infospotPanorama_142.addEventListener('click', function(){
+viewer.setPanorama( Panorama_13 );
+});
+var infospotPanorama_143 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_143.position.set( 3910.27, -111.88, 3098.43 );
+							Panorama_14.add(infospotPanorama_143);
+infospotPanorama_143.addEventListener('click', function(){
+getWall(41,45);
+});
+var infospotPanorama_144 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_144.position.set( -3378.54, -14.79, 3682.01 );
+							Panorama_14.add(infospotPanorama_144);
+infospotPanorama_144.addEventListener('click', function(){
+getWall(46,49);
+});
+var infospotPanorama_145 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_145.position.set( 20.14, 35.34, 4997.56 );
+							Panorama_14.add(infospotPanorama_145);
+infospotPanorama_145.addEventListener('click', function(){
+infexExit();
+});
+viewer.add( Panorama_14 );
+var Panorama_3_setengah = new PANOLENS.ImagePanorama( "panoramas/Panorama_3_setengah.jpg" );
+						Panorama_3_setengah.addEventListener('progress', function(e){
+							$("#loading").show();
+						});
+						Panorama_3_setengah.addEventListener('load', function(e){
+							$("#loading").fadeOut();
+						});
+						Panorama_3_setengah.addEventListener('click', function(e){
+						});
+
+var infospotPanorama_3_setengah0 = new PANOLENS.Infospot( 512, hotspotIcons[1].data, true );
+							infospotPanorama_3_setengah0.position.set( 677.34, -1791.77, 4608.66 );
+							Panorama_3_setengah.add(infospotPanorama_3_setengah0);
+infospotPanorama_3_setengah0.addEventListener('click', function(){
+viewer.setPanorama( Panorama_3 );
+});
+var infospotPanorama_3_setengah1 = new PANOLENS.Infospot( 512, hotspotIcons[1].data, true );
+							infospotPanorama_3_setengah1.position.set( -2066.47, -920.39, -4451.21 );
+							Panorama_3_setengah.add(infospotPanorama_3_setengah1);
+infospotPanorama_3_setengah1.addEventListener('click', function(){
+viewer.setPanorama( Panorama_4 );
+});
+var infospotPanorama_3_setengah2 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_3_setengah2.position.set( -2655.17, 157.64, -4221.98 );
+							Panorama_3_setengah.add(infospotPanorama_3_setengah2);
+infospotPanorama_3_setengah2.addEventListener('click', function(){
+viewer.setPanorama( Panorama_5 );
+});
+var infospotPanorama_3_setengah3 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_3_setengah3.position.set( 4968.60, 328.77, 352.67 );
+							Panorama_3_setengah.add(infospotPanorama_3_setengah3);
+infospotPanorama_3_setengah3.addEventListener('click', function(){
+getWall(36,40);
+});
+var infospotPanorama_3_setengah4 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_3_setengah4.position.set( -4201.77, -120.98, -2688.94 );
+							Panorama_3_setengah.add(infospotPanorama_3_setengah4);
+infospotPanorama_3_setengah4.addEventListener('click', function(){
+dococ();
+});
+var infospotPanorama_3_setengah5 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_3_setengah5.position.set( -4960.32, 72.04, 582.16 );
+							Panorama_3_setengah.add(infospotPanorama_3_setengah5);
+infospotPanorama_3_setengah5.addEventListener('click', function(){
+selfTalk("cermin3");
+});
+viewer.add( Panorama_3_setengah );
+var Panorama_15 = new PANOLENS.ImagePanorama( "panoramas/Panorama_15.jpg" );
+						Panorama_15.addEventListener('progress', function(e){
+							$("#loading").show();
+						});
+						Panorama_15.addEventListener('load', function(e){
+							$("#loading").fadeOut();
+						});
+						Panorama_15.addEventListener('click', function(e){
+						});
+
+var infospotPanorama_150 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+							infospotPanorama_150.position.set( 26.02, -198.52, -4990.84 );
+							Panorama_15.add(infospotPanorama_150);
+infospotPanorama_150.addEventListener('click', function(){
+thankYou();
+});
+viewer.add( Panorama_15 );
+$(document).ready(function(){ viewer.setPanorama( Panorama_1 ); });
+
+/*panoramas-end*/
+            
+// tidak bisa karna it has been loaded
+Panorama_1.addEventListener('enter-start', function(e){
+	foot_sound.play();
+});
+Panorama_6.addEventListener('enter-start', function(e){
+	foot_sound.play();
+});
+Panorama_6_detail.addEventListener('enter-start', function(e){
+	foot_sound.play();
+});
+Panorama_7.addEventListener('enter-start', function(e){
+	foot_sound.play();
+});
+Panorama_8.addEventListener('enter-start', function(e){
+	foot_sound.play();
+});
+Panorama_9.addEventListener('enter-start', function(e){
+	foot_sound.play();
+});
+Panorama_9_detail.addEventListener('enter-start', function(e){
+	foot_sound.play();
+});
+Panorama_10.addEventListener('enter-start', function(e){
+	foot_sound.play();
+});
+Panorama_11.addEventListener('enter-start', function(e){
+	foot_sound.play();
+});
+Panorama_12.addEventListener('enter-start', function(e){
+	foot_sound.play();
+});
+Panorama_13.addEventListener('enter-start', function(e){
+	foot_sound.play();
+});
+Panorama_14.addEventListener('enter-start', function(e){
+	foot_sound.play();
+});
+
+Panorama_2.addEventListener('enter-start', function(e){
+	foot_sound.play();
+	if(section==5){
+		// alert('yuk ganti')
+		pano2_evil = new THREE.TextureLoader().load( "panoramas/Panorama_2_evil.jpg" );
+		Panorama_2.updateTexture(pano2_evil);
+	}
+	
+});
+
+Panorama_3.addEventListener('enter-start', function(e){
+	foot_sound.play();
+	if(section==5){
+		pano3_evil = new THREE.TextureLoader().load( "panoramas/Panorama_3_evil.jpg" );
+		Panorama_3.updateTexture(pano3_evil);
+	}
+	
+});
+
+Panorama_3_setengah.addEventListener('enter-start', function(e){
+	foot_sound.play();
+	if(section==5){
+		pano3_setengah_evil = new THREE.TextureLoader().load( "panoramas/Panorama_3_setengah_evil.jpg" );
+		Panorama_3_setengah.updateTexture(pano3_setengah_evil);
+	}
+	
+	
+});
+
+Panorama_4.addEventListener('enter-start', function(e){
+	foot_sound.play();
+	if(section==5){
+		pano4_evil = new THREE.TextureLoader().load( "panoramas/Panorama_4_evil.jpg" );
+		Panorama_4.updateTexture(pano4_evil);
+	}
+	
+});
+
+Panorama_5.addEventListener('enter-start', function(e){
+	foot_sound.play();
+	if(section==5){
+		pano5_evil = new THREE.TextureLoader().load( "panoramas/Panorama_5_evil.jpg" );
+		Panorama_5.updateTexture(pano5_evil);
+	}
+	
+});
+
+// panorama loader
+Panorama_2.addEventListener('load', function(e){
+	imageCacher(2);
+	if(section==5){
+		// alert('yuk ganti')
+		pano2_evil = new THREE.TextureLoader().load( "panoramas/Panorama_2_evil.jpg" );
+		Panorama_2.updateTexture(pano2_evil);
+	}
+	
+});
+
+Panorama_3.addEventListener('load', function(e){
+	imageCacher(3);
+	if(section==5){
+		pano3_evil = new THREE.TextureLoader().load( "panoramas/Panorama_3_evil.jpg" );
+		Panorama_3.updateTexture(pano3_evil);
+	}
+	
+});
+
+Panorama_3_setengah.addEventListener('load', function(e){
+	
+	if(section==5){
+		pano3_setengah_evil = new THREE.TextureLoader().load( "panoramas/Panorama_3_setengah_evil.jpg" );
+		Panorama_3_setengah.updateTexture(pano3_setengah_evil);
+	}
+	
+	
+});
+
+Panorama_4.addEventListener('load', function(e){
+	imageCacher(4);
+	if(section==5){
+		pano4_evil = new THREE.TextureLoader().load( "panoramas/Panorama_4_evil.jpg" );
+		Panorama_4.updateTexture(pano4_evil);
+	}
+	
+});
+
+Panorama_5.addEventListener('load', function(e){
+	if(section==5){
+		pano5_evil = new THREE.TextureLoader().load( "panoramas/Panorama_5_evil.jpg" );
+		Panorama_5.updateTexture(pano5_evil);
+	}
+	
+});
+
+Panorama_6.addEventListener('load', function(e){
+	imageCacher(6);
+});
+
+Panorama_6_detail.addEventListener('load', function(e){
+	imageCacher(6.5);
+});
+
+Panorama_8.addEventListener('load', function(e){
+	imageCacher(8);
+});
+
+Panorama_10.addEventListener('load', function(e){
+	imageCacher(10);
+});
+function imageCacher(panorama){
+	if(panorama==2){
+		cache_wall = ['2','31','32','33','34','35'];
+		cache_wall.forEach(function(data){
+			$('.image-cacher').append('<img width="1" height="1" src="image/'+data+'.jpg">');
+			console.log(data)
+		});
+	}else if(panorama==3){
+		cache_wall = ['3','4','36','37','38','39','40'];
+		cache_wall.forEach(function(data){
+			$('.image-cacher').append('<img width="1" height="1" src="image/'+data+'.jpg">');
+			console.log(data)
+		});
+		$('.image-cacher').append('<img width="1" height="1" src="dococ/angry.jpg">');
+		$('.image-cacher').append('<img width="1" height="1" src="dococ/neutral.jpg">');
+		$('.image-cacher').append('<img width="1" height="1" src="dococ/happy.jpg">');
+	}else if(panorama==4){
+		cache_wall = ['1','22','23','24','25','26'];
+		cache_wall.forEach(function(data){
+			$('.image-cacher').append('<img width="1" height="1" src="image/'+data+'.jpg">');
+			console.log(data)
+		});
+	}else if(panorama==5){
+		cache_wall = ['5','6','7','8','9'];
+		cache_wall.forEach(function(data){
+			$('.image-cacher').append('<img width="1" height="1" src="image/'+data+'.jpg">');
+			console.log(data)
+		});
+	}else if(panorama==6){
+		cache_wall = ['50','51','52','53','54','19','20'];
+		cache_wall.forEach(function(data){
+			$('.image-cacher').append('<img width="1" height="1" src="image/'+data+'.jpg">');
+			console.log(data)
+		});
+	}else if(panorama==6.5){
+		cache_wall = ['27','28','29','30','31','21'];
+		cache_wall.forEach(function(data){
+			$('.image-cacher').append('<img width="1" height="1" src="image/'+data+'.jpg">');
+			console.log(data)
+		});
+	}else if(panorama==8){
+		cache_wall = ['12','13','14','15','16','18','19'];
+		cache_wall.forEach(function(data){
+			$('.image-cacher').append('<img width="1" height="1" src="image/'+data+'.jpg">');
+			console.log(data)
+		});
+	}else if(panorama==10){
+		cache_wall = ['41','42','43','44','45','46','47','48','49'];
+		cache_wall.forEach(function(data){
+			$('.image-cacher').append('<img width="1" height="1" src="image/'+data+'.jpg">');
+			console.log(data)
+		});
+	}
+}
+
+
+
+
+// window.updatePano=function(){
+// 		// viewer.setPanorama(Panorama_2);
+// 		pano2_evil = new THREE.TextureLoader().load( "panoramas/Panorama_2_evil.jpg" );
+// 		viewer.setPanorama( Panorama_2 );
+
+// 		Panorama_2.addEventListener('load', function(e){
+// 			Panorama_2.updateTexture(pano2_evil);
+// 		});
+		
+		PANOLENS.ImageLoader.load('panoramas/Panorama_2.jpg');
+    	new THREE.TextureLoader().load( "panoramas/Panorama_2.jpg" );
+		
+		new Image().src = "panoramas/Panorama_2.jpg";
+// 	}
+			
+			
+			
+			// console.log(panorama);
+			function hideTemp(){
+				$("#tmp").fadeOut();
+				setTimeout(function(){
+					$("#tmpcontent").html("");
+				},1000);
+			}
+			
+			function showMedia(type, content){
+				switch(type){
+					case 1 :
+						//Image
+						$("#tmpcontent").html("<img src='"+content+"' style='width: 100%;'>");
+						$("#tmp").fadeIn();
+						break;
+					case 2 :
+						//Video
+						$("#tmpcontent").html("<video id='webvideo' controls autoplay style='width: 100%; height: 100%;'><source src='" +content+ "' type='video/mp4'> Your browser does not support the video tag. </video>");
+						$("#tmp").fadeIn();
+						break;
+					case 3 :
+						//Audio
+						$("#tmpcontent").html("<audio controls style='width: 100%;'><source src='"+content+"' type='audio/ogg'>Your browser does not support the audio tag.</audio>");
+						$("#tmp").fadeIn();
+						break;
+					case 4 :
+						//PDF
+						$("#tmpcontent").html("<iframe src='pdfjs/web/viewer.html?file=../../"+content+"' style='width: 100%; height: 100%;'></iframe>");
+						$("#tmp").fadeIn();
+						break;
+				}
+			}
+        </script>
+	</body>
+</html>

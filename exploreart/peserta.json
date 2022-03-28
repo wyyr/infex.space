@@ -1,0 +1,672 @@
+[
+    {
+        "id": 1,
+        "study": "NIRMANA 2D",
+        "work_name": "Biomorphic",
+        "name": "TABINAZZAHRA PRAGISA",
+        "type": "2D",
+        "sort": "1",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 2,
+        "study": "NIRMANA 2D",
+        "work_name": "Bidang Geometris",
+        "name": "RENDRA TYUS RANATHAN",
+        "type": "2D",
+        "sort": "2",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 3,
+        "study": "NIRMANA 2D",
+        "work_name": "Garis Ekspresif",
+        "name": "VIOLITA CUCU .A",
+        "type": "2D",
+        "sort": "3",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 4,
+        "study": "NIRMANA 2D",
+        "work_name": "Garis Geometri",
+        "name": "EMERALDA DIZA .P",
+        "type": "2D",
+        "sort": "4",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 5,
+        "study": "NIRMANA 2D",
+        "work_name": "Nirmana Mix",
+        "name": "AZKA KHUMAEROH NILNALMIN",
+        "type": "2D",
+        "sort": "5",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 6,
+        "study": "NIRMANA 2D",
+        "work_name": "Nirmana Mix",
+        "name": "ANISA SEPTI RATNASARI",
+        "type": "2D",
+        "sort": "6",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 7,
+        "study": "NIRMANA 2D",
+        "work_name": "Tekstur Mekanik",
+        "name": "VICI DYAH PURBANINGRUM",
+        "type": "2D",
+        "sort": "7",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 8,
+        "study": "NIRMANA 2D",
+        "work_name": "Titik",
+        "name": "BILQIS SEKARINI PUTRI",
+        "type": "2D",
+        "sort": "8",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 9,
+        "study": "NIRMANA 2D",
+        "work_name": "Warna",
+        "name": "NADIA DIPTYA WIDYASWATI",
+        "type": "2D",
+        "sort": "9",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 10,
+        "study": "BAHAN PROSES",
+        "work_name": "Laminasi Bahan",
+        "name": "LINDA WAHYU LAILA .S",
+        "type": "2D",
+        "sort": "10",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 11,
+        "study": "BAHAN PROSES",
+        "work_name": "Laminasi Bahan",
+        "name": "WISNU AJI PRABOWO",
+        "type": "2D",
+        "sort": "11",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 12,
+        "study": "FOTOGRAFI",
+        "work_name": "Teknik Double Exposure",
+        "name": "AHMAD MUHSIN",
+        "type": "2D",
+        "sort": "12",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 13,
+        "study": "FOTOGRAFI",
+        "work_name": "Teknik  DoF Sempit",
+        "name": "BAYU AJI SAMUDRA",
+        "type": "2D",
+        "sort": "13",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 14,
+        "study": "FOTOGRAFI",
+        "work_name": "Teknik Silhouette",
+        "name": "BILQIS SEKARINI PUTRI",
+        "type": "2D",
+        "sort": "14",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 15,
+        "study": "FOTOGRAFI",
+        "work_name": "Teknik Macro",
+        "name": "FEBRIAN AFRIK DWI",
+        "type": "2D",
+        "sort": "15",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 16,
+        "study": "FOTOGRAFI",
+        "work_name": "Teknik Brush Lighting",
+        "name": "NADIA DIPTYA WIDYASWATI",
+        "type": "2D",
+        "sort": "16",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 17,
+        "study": "FOTOGRAFI",
+        "work_name": "Teknik Slow Motion",
+        "name": "OVI MARATUS .S",
+        "type": "2D",
+        "sort": "17",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 18,
+        "study": "FOTOGRAFI",
+        "work_name": "Teknik Brush Lighting",
+        "name": "SHAFA SHAUQI A",
+        "type": "2D",
+        "sort": "18",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 19,
+        "study": "FOTOGRAFI",
+        "work_name": "Teknik Black and White",
+        "name": "STEFANI P",
+        "type": "2D",
+        "sort": "19",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 20,
+        "study": "FOTOGRAFI",
+        "work_name": "Teknik DoF Sempit",
+        "name": "VALENCIA AUDREY",
+        "type": "2D",
+        "sort": "20",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 21,
+        "study": "FOTOGRAFI",
+        "work_name": "Teknik Black and White",
+        "name": "VERNANDA SALSABILA",
+        "type": "2D",
+        "sort": "21",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 22,
+        "study": "PSRD",
+        "work_name": "Urban Sketch",
+        "name": "AHMAD MUHSIN",
+        "type": "2D",
+        "sort": "22",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 23,
+        "study": "PSRD",
+        "work_name": "Urban Sketch",
+        "name": "BILQIS SEKARINI PUTRI",
+        "type": "2D",
+        "sort": "23",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 24,
+        "study": "PSRD",
+        "work_name": "Urban Sketch",
+        "name": "DELLA MAHANDIKA MANUDI",
+        "type": "2D",
+        "sort": "24",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 25,
+        "study": "PSRD",
+        "work_name": "Urban Sketch",
+        "name": "NAURA NADINE CHALISYA",
+        "type": "2D",
+        "sort": "25",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 26,
+        "study": "PSRD",
+        "work_name": "Urban Sketch",
+        "name": "VERNANDA SALSABILA ZALFA",
+        "type": "2D",
+        "sort": "26",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 27,
+        "study": "TEKKOM",
+        "work_name": "Rencana Laintai",
+        "name": "DELLA MAHANDIKA",
+        "type": "2D",
+        "sort": "27",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 28,
+        "study": "TEKKOM",
+        "work_name": "Denah Furniture",
+        "name": "DELLA MAHANDIKA",
+        "type": "2D",
+        "sort": "28",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 29,
+        "study": "TEKKOM",
+        "work_name": "Perspektif Ruang Tamu",
+        "name": "KEZIA L.W",
+        "type": "2D",
+        "sort": "29",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 30,
+        "study": "TEKKOM",
+        "work_name": "Denah Furniture",
+        "name": "AILEEN FORTUNA",
+        "type": "2D",
+        "sort": "30",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 31,
+        "study": "MENGGAMBAR BENDA",
+        "work_name": "Pose Manusia",
+        "name": "DELLA MAHANDIKA",
+        "type": "2D",
+        "sort": "31",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 32,
+        "study": "MENGGAMBAR BENDA",
+        "work_name": "Anatomi Wajah",
+        "name": "LINDA WAHYU LAILA .S",
+        "type": "2D",
+        "sort": "32",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 33,
+        "study": "MENGGAMBAR BENDA",
+        "work_name": "Sketsa Interior",
+        "name": "NAURA NADINE CHALISYA",
+        "type": "2D",
+        "sort": "33",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 34,
+        "study": "MENGGAMBAR BENDA",
+        "work_name": "Tekstur Mekanik",
+        "name": "NADINE CHALISYA",
+        "type": "2D",
+        "sort": "34",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 35,
+        "study": "MENGGAMBAR BENDA",
+        "work_name": "Sketsa Produk",
+        "name": "OVI MARATUS .S",
+        "type": "2D",
+        "sort": "35",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 36,
+        "study": "MENGGAMBAR BENDA",
+        "work_name": "Anatomi Wajah",
+        "name": "RENDRA TYUS RANATHAN",
+        "type": "2D",
+        "sort": "36",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 37,
+        "study": "MENGGAMBAR BENDA",
+        "work_name": "Interior Cafe",
+        "name": "TABINAZZAHRA PRAGISA",
+        "type": "2D",
+        "sort": "37",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 38,
+        "study": "MENGGAMBAR BENDA",
+        "work_name": "Tanaman",
+        "name": "VIOLITA CUCU",
+        "type": "2D",
+        "sort": "38",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 39,
+        "study": "MENGGAMBAR BENDA",
+        "work_name": "Anatomi Wajah",
+        "name": "VIOLITA CUCU",
+        "type": "2D",
+        "sort": "39",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 40,
+        "study": "MENGGAMBAR BENDA",
+        "work_name": "Tanaman",
+        "name": "WISNU AJI PRABOWO",
+        "type": "2D",
+        "sort": "40",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 41,
+        "study": "MENGGAMBAR PROYEKSI",
+        "work_name": "Perspektif 3 Titik Hilang",
+        "name": "ADINDA TRISYANDIT",
+        "type": "2D",
+        "sort": "41",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 42,
+        "study": "MENGGAMBAR PROYEKSI",
+        "work_name": "Golden Ratio Perspektif",
+        "name": "ADITYA REVI SETIAWAN",
+        "type": "2D",
+        "sort": "42",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 43,
+        "study": "MENGGAMBAR PROYEKSI",
+        "work_name": "Aksonometri Kursi Perspektif",
+        "name": "AHMAD MUHSIN",
+        "type": "2D",
+        "sort": "43",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 44,
+        "study": "MENGGAMBAR PROYEKSI",
+        "work_name": "Perspektif Kamar Tidur",
+        "name": "ANISA SEPTI .R",
+        "type": "2D",
+        "sort": "44",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 45,
+        "study": "MENGGAMBAR PROYEKSI",
+        "work_name": "Proyeksi Furniture",
+        "name": "CARIMA ADIBATUL HUSNA",
+        "type": "2D",
+        "sort": "45",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 46,
+        "study": "MENGGAMBAR PROYEKSI",
+        "work_name": "Perspektif and Aksonometri Apartemen",
+        "name": "CARIMA ADIBATUL HUSNA",
+        "type": "2D",
+        "sort": "46",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 47,
+        "study": "MENGGAMBAR PROYEKSI",
+        "work_name": "Aksonometri Dasar Perspektif",
+        "name": "DELLA MAHANDIKA",
+        "type": "2D",
+        "sort": "47",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 48,
+        "study": "MENGGAMBAR PROYEKSI",
+        "work_name": "Perspektif 2 Titik Hilang",
+        "name": "LINDA WAHYU LAILA",
+        "type": "2D",
+        "sort": "48",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 49,
+        "study": "MENGGAMBAR PROYEKSI",
+        "work_name": "Perspektif 2 Titik Hilang",
+        "name": "RENDRA TYUS RANATHAN",
+        "type": "2D",
+        "sort": "49",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 50,
+        "study": "KOMPUTER GRAFIS",
+        "work_name": "Poster",
+        "name": "ADITYA REVI SETIAWAN",
+        "type": "2D",
+        "sort": "50",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 51,
+        "study": "KOMPUTER GRAFIS",
+        "work_name": "Poster",
+        "name": "BINTANG MANAHIL",
+        "type": "2D",
+        "sort": "51",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 52,
+        "study": "KOMPUTER GRAFIS",
+        "work_name": "Poster Uas",
+        "name": "NADIA DIPTYA",
+        "type": "2D",
+        "sort": "52",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 53,
+        "study": "KOMPUTER GRAFIS",
+        "work_name": "Poster Iklan",
+        "name": "SHAFA SHAUQI",
+        "type": "2D",
+        "sort": "53",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 54,
+        "study": "KOMPUTER GRAFIS",
+        "work_name": "Ilustrasi",
+        "name": "NADIA DIPTYA",
+        "type": "2D",
+        "sort": "54",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 55,
+        "study": "NIRMANA TRIMATRA",
+        "work_name": "Nirmana Tanah Liat",
+        "name": "AZKA KHUMAEROH NILNALMIN",
+        "type": "3D",
+        "sort": "55",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 56,
+        "study": "NIRMANA TRIMATRA",
+        "work_name": "Nirmana Kawat",
+        "name": "DELLA MAHANDIKA",
+        "type": "3D",
+        "sort": "56",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 57,
+        "study": "NIRMANA TRIMATRA",
+        "work_name": "Nirmana Yellow Board",
+        "name": "AHMAD MUHSIN",
+        "type": "3D",
+        "sort": "57",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 58,
+        "study": "NIRMANA TRIMATRA",
+        "work_name": "Nirmana Stik Eskrim",
+        "name": "KHOIRUNNISA DHIYA",
+        "type": "3D",
+        "sort": "58",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 59,
+        "study": "NIRMANA TRIMATRA",
+        "work_name": "Nirmana Sedotan",
+        "name": "Linda Wahyu Laila Shofiana",
+        "type": "3D",
+        "sort": "59",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 60,
+        "study": "NIRMANA TRIMATRA",
+        "work_name": "Nirmana White Foam",
+        "name": "RENDRA TYUS RANATHAN",
+        "type": "3D",
+        "sort": "60",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 61,
+        "study": "NIRMANA TRIMATRA",
+        "work_name": "Nirmana White Foam",
+        "name": "VERNANDA",
+        "type": "3D",
+        "sort": "61",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 62,
+        "study": "NIRMANA TRIMATRA",
+        "work_name": "Nirmana White Foam",
+        "name": "AZKA KHUMAEROH NILNALMIN",
+        "type": "3D",
+        "sort": "62",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 63,
+        "study": "NIRMANA TRIMATRA",
+        "work_name": "Nirmana Stik Eksrim",
+        "name": "DELLA MANHANDIKA",
+        "type": "3D",
+        "sort": "63",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 64,
+        "study": "NIRMANA TRIMATRA",
+        "work_name": "Nirmana Yellow Board",
+        "name": "Linda Wahyu Laila Shofiana",
+        "type": "3D",
+        "sort": "64",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 65,
+        "study": "NIRMANA TRIMATRA",
+        "work_name": "Nirmana Yellow Board",
+        "name": "RENDRA TYUS RANATHAN",
+        "type": "3D",
+        "sort": "65",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 66,
+        "study": "BAHAN & PROSES",
+        "work_name": "Table Lamp Laminasi Lidi",
+        "name": "Linda Wahyu Laila Shofiana",
+        "type": "3D",
+        "sort": "66",
+        "url": "",
+        "thumbnail": ""
+    },
+    {
+        "id": 67,
+        "study": "BAHAN & PROSES",
+        "work_name": "Table Lamp Laminasi Lidi",
+        "name": "Violita Cucu Amartya",
+        "type": "3D",
+        "sort": "67",
+        "url": "",
+        "thumbnail": ""
+    }
+]

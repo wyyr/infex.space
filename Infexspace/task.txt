@@ -1,0 +1,21 @@
+finsih all get wall in 3 sixty done
+implementing 3d viewer
+
+trouble {
+ngeload 2d belum smooth, harus ada loadingnya
+tombol back ada yang tidak fungsi di android
+reccomended chrome
+back button inside
+back button warning
+3d compress
+exit lobby
+fixing dialog
+add easter egg
+
+add guideline
+
+1. di aku gada suaranya (atau emg gada(?))
+2. klo di hp hbs ngeliat karya bingung baliknya hrs pencet yg mana
+3. gambar2 karya yang 2D jadi lebih gelap bgtt kalo di pencet view nya, (gatau apa emang pengaruh dari dark mode hp aku atau emg gitu aslinya)
+4. Kalo bisa jangan ada sound effect fax/komputer gitu.. Soalnya ini kan pameran bukan kantor jadi gausah ada suara2 aktivitas perkantoran, mungkin diganti sfx yg lain atau di ilangin aja (?);
+

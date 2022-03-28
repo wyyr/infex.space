@@ -1,0 +1,184 @@
+{
+    "asset" : {
+        "generator" : "Khronos glTF Blender I/O v1.6.16",
+        "version" : "2.0"
+    },
+    "scene" : 0,
+    "scenes" : [
+        {
+            "extras" : {
+                "glTF2ExportSettings" : {
+                    "export_apply" : 1,
+                    "export_extras" : 1,
+                    "export_format" : "GLTF_SEPARATE",
+                    "export_image_format" : "JPEG",
+                    "export_tangents" : 1,
+                    "export_texture_dir" : "textures",
+                    "use_mesh_edges" : 1,
+                    "use_mesh_vertices" : 1,
+                    "use_selection" : 1
+                },
+                "ats_settings" : {
+                    "num_tiles" : [
+                        60,
+                        34
+                    ],
+                    "threads_error" : 0,
+                    "prev_engine" : "CYCLES",
+                    "prev_device" : "CPU",
+                    "prev_border" : 0,
+                    "prev_threads" : 6,
+                    "prev_choice" : "32",
+                    "prev_res" : [
+                        1920,
+                        1080
+                    ],
+                    "prev_border_res" : [
+                        0,
+                        0,
+                        1,
+                        1
+                    ],
+                    "prev_actual_tile_size" : [
+                        32,
+                        32
+                    ],
+                    "first_run" : 0
+                }
+            },
+            "name" : "Scene",
+            "nodes" : [
+                0
+            ]
+        }
+    ],
+    "nodes" : [
+        {
+            "mesh" : 0,
+            "name" : "Cube.042",
+            "rotation" : [
+                -0.1891040802001953,
+                0.005970774218440056,
+                -0.014243736863136292,
+                0.9818356037139893
+            ],
+            "scale" : [
+                1.0014314651489258,
+                1.001430869102478,
+                1.0014320611953735
+            ],
+            "translation" : [
+                -0.12860441207885742,
+                -0.9799708127975464,
+                0.5247867703437805
+            ]
+        }
+    ],
+    "materials" : [
+        {
+            "doubleSided" : true,
+            "name" : "Material.002",
+            "pbrMetallicRoughness" : {
+                "baseColorFactor" : [
+                    0.800000011920929,
+                    0.800000011920929,
+                    0.800000011920929,
+                    1
+                ],
+                "roughnessFactor" : 0.209090918302536
+            }
+        }
+    ],
+    "meshes" : [
+        {
+            "name" : "Cube.036",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 0,
+                        "NORMAL" : 1,
+                        "TANGENT" : 2,
+                        "TEXCOORD_0" : 3
+                    },
+                    "indices" : 4,
+                    "material" : 0
+                }
+            ]
+        }
+    ],
+    "accessors" : [
+        {
+            "bufferView" : 0,
+            "componentType" : 5126,
+            "count" : 43677,
+            "max" : [
+                0.9456011652946472,
+                2.535724639892578,
+                1.0879853963851929
+            ],
+            "min" : [
+                -0.9456011652946472,
+                -0.17958484590053558,
+                -1.2339167594909668
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 1,
+            "componentType" : 5126,
+            "count" : 43677,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 2,
+            "componentType" : 5126,
+            "count" : 43677,
+            "type" : "VEC4"
+        },
+        {
+            "bufferView" : 3,
+            "componentType" : 5126,
+            "count" : 43677,
+            "type" : "VEC2"
+        },
+        {
+            "bufferView" : 4,
+            "componentType" : 5123,
+            "count" : 163416,
+            "type" : "SCALAR"
+        }
+    ],
+    "bufferViews" : [
+        {
+            "buffer" : 0,
+            "byteLength" : 524124,
+            "byteOffset" : 0
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 524124,
+            "byteOffset" : 524124
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 698832,
+            "byteOffset" : 1048248
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 349416,
+            "byteOffset" : 1747080
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 326832,
+            "byteOffset" : 2096496
+        }
+    ],
+    "buffers" : [
+        {
+            "byteLength" : 2423328,
+            "uri" : "scene.bin"
+        }
+    ]
+}

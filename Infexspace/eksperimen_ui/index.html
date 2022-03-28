@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="main.css">
+	<title>Test Image Map</title>
+</head>
+<body>
+	
+	<div class="grid-container">	  
+		<main class="grid-item main">
+			<div class="items">
+		      <img src="image.jpg" height="100px">
+		      <img src="image.jpg" height="100px">
+		      <img src="image.jpg" height="100px">
+		      <img src="image.jpg" height="100px">
+		      <img src="image.jpg" height="100px">
+		      <img src="image.jpg" height="100px">
+		      <img src="image.jpg" height="100px">
+		      <img src="image.jpg" height="100px">
+		      <img src="image.jpg" height="100px">
+		    </div>
+		  </main>
+		</div>
+	
+	<script type="text/javascript">
+		const slider = document.querySelector('.items');
+		let isDown = false;
+		let startX;
+		let scrollLeft;
+
+		slider.addEventListener('mousedown', (e) => {
+		  isDown = true;
+		  slider.classList.add('active');
+		  startX = e.pageX - slider.offsetLeft;
+		  scrollLeft = slider.scrollLeft;
+		});
+		slider.addEventListener('mouseleave', () => {
+		  isDown = false;
+		  slider.classList.remove('active');
+		});
+		slider.addEventListener('mouseup', () => {
+		  isDown = false;
+		  slider.classList.remove('active');
+		});
+		slider.addEventListener('mousemove', (e) => {
+		  if(!isDown) return;
+		  e.preventDefault();
+		  const x = e.pageX - slider.offsetLeft;
+		  const walk = (x - startX) * 3; //scroll-fast
+		  slider.scrollLeft = scrollLeft - walk;
+		  console.log(walk);
+		});
+	</script>
+</body>
+</html>
